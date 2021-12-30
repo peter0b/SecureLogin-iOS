@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ActionItemCollectionViewCell" customModule="GNS_Secure_Login" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzh-Ht-ZSn">
+                        <rect key="frame" x="8" y="8" width="55.5" height="59"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                        <color key="textColor" name="Text4"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="available_badges"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zui-lJ-AcJ">
+                        <rect key="frame" x="8" y="70.5" width="398" height="0.5"/>
+                        <color key="backgroundColor" name="BorderPrimary"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.75" id="wIH-t2-hdO"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="fzh-Ht-ZSn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="MF0-dj-LIO"/>
+                <constraint firstAttribute="bottom" secondItem="Zui-lJ-AcJ" secondAttribute="bottom" constant="4" id="dS7-3S-7cq"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fzh-Ht-ZSn" secondAttribute="trailing" constant="8" id="fQ8-TK-Riq"/>
+                <constraint firstAttribute="trailing" secondItem="Zui-lJ-AcJ" secondAttribute="trailing" constant="8" id="pxa-fY-ukd"/>
+                <constraint firstItem="Zui-lJ-AcJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="rjA-3B-L2N"/>
+                <constraint firstAttribute="bottom" secondItem="fzh-Ht-ZSn" secondAttribute="bottom" constant="8" id="szW-yq-mUd"/>
+                <constraint firstItem="fzh-Ht-ZSn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="xod-Zr-mab"/>
+            </constraints>
+            <connections>
+                <outlet property="actionTitleLabel" destination="fzh-Ht-ZSn" id="JNJ-cp-OjY"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="56"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="BorderPrimary">
+            <color red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Text4">
+            <color red="0.054901960784313725" green="0.047058823529411764" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

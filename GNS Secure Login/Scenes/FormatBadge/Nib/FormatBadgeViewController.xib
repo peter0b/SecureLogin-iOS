@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FormatBadgeViewController" customModule="GNS_Secure_Login" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="hwu-cw-hHe" customClass="BackgroudImageView" customModule="GNS_Secure_Login" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZO-Km-zIL">
+                    <rect key="frame" x="26" y="54" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="0kd-YX-w04"/>
+                        <constraint firstAttribute="width" secondItem="GZO-Km-zIL" secondAttribute="height" id="yMM-nW-tVx"/>
+                    </constraints>
+                    <state key="normal" image="back"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="backButtonDidPressed:" destination="-1" eventType="touchUpInside" id="p7R-oe-xgI"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JaP-sJ-f7v">
+                    <rect key="frame" x="70" y="211" width="274" height="75"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVY-Pm-Rk1">
+                            <rect key="frame" x="21" y="27" width="232" height="21"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <color key="textColor" name="TextSecondary"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="are_you_sure"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="Background5"/>
+                    <constraints>
+                        <constraint firstItem="zVY-Pm-Rk1" firstAttribute="top" secondItem="JaP-sJ-f7v" secondAttribute="top" constant="27" id="MCx-Hw-s5v"/>
+                        <constraint firstAttribute="bottom" secondItem="zVY-Pm-Rk1" secondAttribute="bottom" constant="27" id="OaM-eP-bbU"/>
+                        <constraint firstAttribute="trailing" secondItem="zVY-Pm-Rk1" secondAttribute="trailing" constant="21" id="Tv6-hd-rGp"/>
+                        <constraint firstItem="zVY-Pm-Rk1" firstAttribute="leading" secondItem="JaP-sJ-f7v" secondAttribute="leading" constant="21" id="Vdl-AN-eV8"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" name="BorderPrimary"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STG-49-LTE">
+                    <rect key="frame" x="90" y="320" width="89" height="35"/>
+                    <color key="backgroundColor" name="Background5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="deo-L3-rBa"/>
+                        <constraint firstAttribute="width" constant="89" id="ghq-L2-aa1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" name="TextSecondary"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="no"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHalfRounded" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" name="BorderPrimary"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="noButtonDidPressed:" destination="-1" eventType="touchUpInside" id="XsK-GF-1xt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zD7-kP-Zdq">
+                    <rect key="frame" x="235" y="320" width="89" height="35"/>
+                    <color key="backgroundColor" name="Background6"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="9hf-D9-H8R"/>
+                        <constraint firstAttribute="width" constant="89" id="Rj7-vq-qeq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" name="TextSecondary"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="yes"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHalfRounded" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" name="BorderPrimary"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="yesButtonDidPressed:" destination="-1" eventType="touchUpInside" id="bOI-Bn-Dgc"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="JaP-sJ-f7v" firstAttribute="top" secondItem="GZO-Km-zIL" secondAttribute="bottom" constant="132" id="7eu-EV-CH7"/>
+                <constraint firstAttribute="bottom" secondItem="hwu-cw-hHe" secondAttribute="bottom" id="8V3-tK-glS"/>
+                <constraint firstItem="STG-49-LTE" firstAttribute="top" secondItem="JaP-sJ-f7v" secondAttribute="bottom" constant="34" id="D2x-kE-LyF"/>
+                <constraint firstItem="GZO-Km-zIL" firstAttribute="width" secondItem="GZO-Km-zIL" secondAttribute="height" id="Gml-GW-Lli"/>
+                <constraint firstItem="zD7-kP-Zdq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="STG-49-LTE" secondAttribute="trailing" constant="16" id="IAK-Oj-EH2"/>
+                <constraint firstAttribute="trailing" secondItem="hwu-cw-hHe" secondAttribute="trailing" id="VfA-eh-SZV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JaP-sJ-f7v" secondAttribute="trailing" constant="70" id="W01-3i-g4H"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zD7-kP-Zdq" secondAttribute="trailing" constant="90" id="bfP-7F-eOr"/>
+                <constraint firstItem="JaP-sJ-f7v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="70" id="d55-oV-mI5"/>
+                <constraint firstItem="hwu-cw-hHe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gzm-YQ-Xyr"/>
+                <constraint firstItem="GZO-Km-zIL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="mLK-ES-rdh"/>
+                <constraint firstItem="hwu-cw-hHe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tJx-DL-upU"/>
+                <constraint firstItem="STG-49-LTE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="90" id="w0l-zi-250"/>
+                <constraint firstItem="zD7-kP-Zdq" firstAttribute="top" secondItem="JaP-sJ-f7v" secondAttribute="bottom" constant="34" id="wX2-Z5-T4k"/>
+                <constraint firstItem="GZO-Km-zIL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="26" id="xPo-mh-5Nk"/>
+            </constraints>
+            <point key="canvasLocation" x="22" y="78"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="hwu-cw-hHe">
+            <size key="intrinsicContentSize" width="414" height="736"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="Background" width="414" height="736"/>
+        <image name="back" width="25" height="25"/>
+        <namedColor name="Background5">
+            <color red="0.0" green="0.074509803921568626" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Background6">
+            <color red="0.79607843137254897" green="0.14509803921568629" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BorderPrimary">
+            <color red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextSecondary">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

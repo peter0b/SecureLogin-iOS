@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="GNS_Secure_Login" customModuleProvider="target">
+            <connections>
+                <outlet property="loginButtonLandscapeBottomConstraint" destination="dWt-Kj-0oF" id="FTN-Qf-Sv1"/>
+                <outlet property="loginButtonPortraitBottomConstraint" destination="Sqk-rP-yHd" id="7rP-yb-hna"/>
+                <outlet property="passwordTextField" destination="sLW-Qy-2jz" id="ivB-SK-DDd"/>
+                <outlet property="usernameTextField" destination="waR-xp-s62" id="A6Y-UE-PBQ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Tu5-4d-yHf" customClass="BackgroudImageView" customModule="GNS_Secure_Login" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="T8c-4b-mEi">
+                    <rect key="frame" x="74" y="347" width="266" height="202"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A05-W0-IVX">
+                            <rect key="frame" x="0.0" y="0.0" width="266" height="48"/>
+                            <color key="backgroundColor" name="BackgroundPrimary"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="OWi-mZ-Eq9"/>
+                            </constraints>
+                            <color key="textColor" name="TextPrimary"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="company_name"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" name="BorderPrimary"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                    <color key="value" name="PlaceholderPrimary"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="waR-xp-s62">
+                            <rect key="frame" x="0.0" y="77" width="266" height="48"/>
+                            <color key="backgroundColor" name="BackgroundPrimary"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="7Wd-tx-xgH"/>
+                            </constraints>
+                            <color key="textColor" name="TextPrimary"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <textInputTraits key="textInputTraits" textContentType="username"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="username"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" name="BorderPrimary"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                    <color key="value" name="PlaceholderPrimary"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sLW-Qy-2jz">
+                            <rect key="frame" x="0.0" y="154" width="266" height="48"/>
+                            <color key="backgroundColor" name="BackgroundPrimary"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="3Ri-o9-2r4"/>
+                            </constraints>
+                            <color key="textColor" name="TextPrimary"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="password"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" name="BorderPrimary"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                    <color key="value" name="PlaceholderPrimary"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMr-8x-iyP">
+                    <rect key="frame" x="329" y="795" width="62" height="62"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="62" id="2pq-Ux-RHX"/>
+                        <constraint firstAttribute="width" constant="62" id="9E5-lO-Zqg"/>
+                        <constraint firstAttribute="width" constant="62" id="IGJ-bm-xGa"/>
+                        <constraint firstAttribute="width" secondItem="fMr-8x-iyP" secondAttribute="height" multiplier="1:1" id="mlo-vY-QAd"/>
+                        <constraint firstAttribute="width" secondItem="fMr-8x-iyP" secondAttribute="height" id="one-Xm-JHf"/>
+                        <constraint firstAttribute="width" secondItem="fMr-8x-iyP" secondAttribute="height" multiplier="1:1" id="un6-Xw-vlh"/>
+                    </constraints>
+                    <state key="normal" image="Login"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHalfRounded" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="2pq-Ux-RHX"/>
+                            <exclude reference="IGJ-bm-xGa"/>
+                            <exclude reference="mlo-vY-QAd"/>
+                            <exclude reference="un6-Xw-vlh"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=compact">
+                        <mask key="constraints">
+                            <exclude reference="9E5-lO-Zqg"/>
+                            <include reference="IGJ-bm-xGa"/>
+                            <exclude reference="one-Xm-JHf"/>
+                            <include reference="un6-Xw-vlh"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=regular">
+                        <mask key="constraints">
+                            <include reference="2pq-Ux-RHX"/>
+                            <exclude reference="9E5-lO-Zqg"/>
+                            <include reference="mlo-vY-QAd"/>
+                            <exclude reference="one-Xm-JHf"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="loginButtonDidPressed:" destination="-1" eventType="touchUpInside" id="R0A-LS-Agp"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <constraints>
+                <constraint firstItem="T8c-4b-mEi" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="1vW-Ae-uN8"/>
+                <constraint firstItem="fMr-8x-iyP" firstAttribute="leading" secondItem="T8c-4b-mEi" secondAttribute="trailing" constant="74" id="8ma-og-QeS"/>
+                <constraint firstAttribute="trailing" secondItem="Tu5-4d-yHf" secondAttribute="trailing" id="Bb2-4o-pI7"/>
+                <constraint firstItem="T8c-4b-mEi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="74" id="Gu4-Es-p0u"/>
+                <constraint firstItem="T8c-4b-mEi" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Kpq-zY-5dD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fMr-8x-iyP" secondAttribute="trailing" constant="23" id="M7o-qK-f4W"/>
+                <constraint firstAttribute="bottom" secondItem="Tu5-4d-yHf" secondAttribute="bottom" id="Nf6-rf-hWS"/>
+                <constraint firstItem="fMr-8x-iyP" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="-5" id="Sqk-rP-yHd">
+                    <variation key="heightClass=regular-widthClass=regular" constant="-40"/>
+                </constraint>
+                <constraint firstAttribute="bottom" secondItem="fMr-8x-iyP" secondAttribute="bottom" id="dWt-Kj-0oF"/>
+                <constraint firstItem="Tu5-4d-yHf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eMA-bz-ZQn"/>
+                <constraint firstItem="T8c-4b-mEi" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="fga-mA-5yx"/>
+                <constraint firstAttribute="bottom" secondItem="fMr-8x-iyP" secondAttribute="bottom" id="lqL-Vo-ekr"/>
+                <constraint firstItem="T8c-4b-mEi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="74" id="nqf-6K-TGH"/>
+                <constraint firstItem="Tu5-4d-yHf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pKM-RU-x72"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="T8c-4b-mEi" secondAttribute="trailing" constant="74" id="pav-nd-Ioz"/>
+                <constraint firstItem="T8c-4b-mEi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rMq-DZ-K1J"/>
+                <constraint firstItem="T8c-4b-mEi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="74" id="rt7-lJ-XWJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fMr-8x-iyP" secondAttribute="trailing" constant="23" id="tqa-Zd-DAT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fMr-8x-iyP" secondAttribute="trailing" constant="23" id="tzg-AJ-UYh"/>
+                <constraint firstItem="fMr-8x-iyP" firstAttribute="leading" secondItem="T8c-4b-mEi" secondAttribute="trailing" constant="74" id="yTA-Ed-7rX"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="M7o-qK-f4W"/>
+                    <exclude reference="tzg-AJ-UYh"/>
+                    <exclude reference="1vW-Ae-uN8"/>
+                    <exclude reference="Gu4-Es-p0u"/>
+                    <exclude reference="Kpq-zY-5dD"/>
+                    <exclude reference="rt7-lJ-XWJ"/>
+                    <exclude reference="8ma-og-QeS"/>
+                    <exclude reference="dWt-Kj-0oF"/>
+                    <exclude reference="lqL-Vo-ekr"/>
+                    <exclude reference="yTA-Ed-7rX"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="M7o-qK-f4W"/>
+                    <exclude reference="pav-nd-Ioz"/>
+                    <exclude reference="tqa-Zd-DAT"/>
+                    <include reference="1vW-Ae-uN8"/>
+                    <include reference="Gu4-Es-p0u"/>
+                    <exclude reference="fga-mA-5yx"/>
+                    <exclude reference="nqf-6K-TGH"/>
+                    <exclude reference="rMq-DZ-K1J"/>
+                    <exclude reference="Sqk-rP-yHd"/>
+                    <include reference="dWt-Kj-0oF"/>
+                    <include reference="yTA-Ed-7rX"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact-widthClass=regular">
+                <mask key="constraints">
+                    <exclude reference="pav-nd-Ioz"/>
+                    <exclude reference="tqa-Zd-DAT"/>
+                    <include reference="tzg-AJ-UYh"/>
+                    <include reference="Kpq-zY-5dD"/>
+                    <exclude reference="fga-mA-5yx"/>
+                    <exclude reference="nqf-6K-TGH"/>
+                    <exclude reference="rMq-DZ-K1J"/>
+                    <include reference="rt7-lJ-XWJ"/>
+                    <include reference="8ma-og-QeS"/>
+                    <exclude reference="Sqk-rP-yHd"/>
+                    <include reference="lqL-Vo-ekr"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="137.68115942028987" y="91.741071428571431"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="Tu5-4d-yHf">
+            <size key="intrinsicContentSize" width="414" height="736"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="Background" width="414" height="736"/>
+        <image name="Login" width="71" height="71"/>
+        <namedColor name="BackgroundPrimary">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BorderPrimary">
+            <color red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PlaceholderPrimary">
+            <color red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextPrimary">
+            <color red="0.22699999809265137" green="0.36500000953674316" blue="0.63899999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

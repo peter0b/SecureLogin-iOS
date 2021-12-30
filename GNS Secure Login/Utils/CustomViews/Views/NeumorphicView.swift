@@ -1,0 +1,419 @@
+//
+//  NeumorphicView.swift
+//  Neumorphic-View
+//
+//  Created by Yonghyun on 2020/09/24.
+//  Copyright © 2020 Yonghyun. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+@IBDesignable
+class NeumorphicView: UIView {
+    
+    enum ShapeType: Int {
+        case flat    = 0
+        case concave = 1
+        case convex  = 2
+        case pressed = 3
+    }
+    
+    enum DirectionType: Int {
+        case topLeft = 0
+        case topRight = 1
+        case bottomLeft = 2
+        case bottomRight = 3
+    }
+    
+    var shadowPath0: UIBezierPath?
+    var shadowPath1: UIBezierPath?
+    var shadowLayer0: CALayer = CALayer()
+    var shadowLayer1: CALayer = CALayer()
+    var topLayer: CALayer = CALayer()
+    var gradientLayer: CAGradientLayer = CAGradientLayer()
+    var shape: ShapeType = .flat
+    var direction: DirectionType = .topLeft
+    var shadowIntensity: CGFloat = 0
+    var shadowColor0: UIColor?
+    var shadowColor1: UIColor?
+    var gradientColor0: UIColor?
+    var gradientColor1: UIColor?
+    
+    @IBInspectable var shapeType: Int {
+        get {
+            return self.shape.rawValue
+        }
+        
+        set(shapeIndex) {
+            if shapeIndex < 0 || shapeIndex > 3 {
+                self.shape = ShapeType.flat
+            }
+            else {
+                self.shape = ShapeType(rawValue: shapeIndex) ?? ShapeType.flat
+            }
+        }
+    }
+    
+    @IBInspectable var directionType: Int {
+        get {
+            return self.direction.rawValue
+        }
+        
+        set(directionIndex) {
+            if directionIndex < 0 || directionIndex > 3 {
+                self.direction = DirectionType.topLeft
+            }
+            else {
+                self.direction = DirectionType(rawValue: directionIndex) ?? DirectionType.topLeft
+            }
+        }
+    }
+    
+    @IBInspectable override var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            topLayer.cornerRadius = newValue
+            gradientLayer.cornerRadius = newValue
+        }
+    }
+    
+    @IBInspectable var opacity: Float {
+        get {
+            return shadowLayer0.shadowOpacity
+        }
+        set {
+            shadowLayer0.shadowOpacity = newValue
+            shadowLayer1.shadowOpacity = newValue
+        }
+    }
+    
+    @IBInspectable override var shadowRadius: CGFloat {
+        get {
+            return shadowLayer0.shadowRadius*2
+        }
+        set {
+            shadowLayer0.shadowRadius = newValue/2
+            shadowLayer1.shadowRadius = newValue/2
+        }
+    }
+    
+    @IBInspectable var offset: CGFloat {
+        get {
+            return shadowLayer0.shadowOffset.width
+        }
+        set {
+            switch(shape) {
+            case .flat, .concave, .convex:
+                switch(direction) {
+                case .topLeft:
+                    shadowLayer0.shadowOffset = CGSize(width: newValue, height: newValue)
+                    shadowLayer1.shadowOffset = CGSize(width: -newValue, height: -newValue)
+                case .topRight:
+                    shadowLayer0.shadowOffset = CGSize(width: -newValue, height: newValue)
+                    shadowLayer1.shadowOffset = CGSize(width: newValue, height: -newValue)
+                case .bottomLeft:
+                    shadowLayer0.shadowOffset = CGSize(width: newValue, height: -newValue)
+                    shadowLayer1.shadowOffset = CGSize(width: -newValue, height: newValue)
+                case .bottomRight:
+                    shadowLayer0.shadowOffset = CGSize(width: -newValue, height: -newValue)
+                    shadowLayer1.shadowOffset = CGSize(width: newValue, height: newValue)
+                }
+            case .pressed:
+                break
+            }
+        }
+    }
+    
+    override var backgroundColor: UIColor? {
+        didSet {
+            topLayer.backgroundColor = self.backgroundColor?.cgColor
+        }
+    }
+    
+    @IBInspectable var intensity: CGFloat {
+        get {
+            return self.shadowIntensity
+        }
+        set {
+            self.shadowIntensity = newValue
+            
+            let redValue = self.backgroundColor?.redComponent
+            let greenValue = self.backgroundColor?.greenComponent
+            let blueValue = self.backgroundColor?.blueComponent
+            
+            shadowColor0 = UIColor.init(
+                red: redValue!-(newValue/255),
+                green: greenValue!-(newValue/255),
+                blue: blueValue!-(newValue/255), alpha: 1)
+            
+            shadowColor1 = UIColor.init(
+                red: redValue!+(newValue/255),
+                green: greenValue!+(newValue/255),
+                blue: blueValue!+(newValue/255), alpha: 1)
+            
+            shadowLayer0.shadowColor = shadowColor0?.cgColor
+            shadowLayer1.shadowColor = shadowColor1?.cgColor
+            
+            gradientColor0 = UIColor.init(
+                red: redValue!-(25/255),
+                green: greenValue!-(25/255),
+                blue: blueValue!-(25/255), alpha: 1)
+            
+            gradientColor1 = UIColor.init(
+                red: redValue!+(25/255),
+                green: greenValue!+(25/255),
+                blue: blueValue!+(25/255), alpha: 1)
+        }
+    }
+    
+    fileprivate func setup() {
+        shadowPath0 = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius)
+        shadowLayer0.frame = self.bounds
+        shadowLayer0.shadowPath = shadowPath0?.cgPath
+        shadowLayer0.shadowColor = shadowColor0?.cgColor
+        self.layer.insertSublayer(shadowLayer0, at: 0)
+        
+        shadowPath1 = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius)
+        shadowLayer1.frame = self.bounds
+        shadowLayer1.shadowPath = shadowPath1?.cgPath
+        shadowLayer1.shadowColor = shadowColor1?.cgColor
+        self.layer.insertSublayer(shadowLayer1, at: 1)
+        
+        topLayer.frame = self.bounds
+        self.layer.insertSublayer(topLayer, at: 2)
+        
+        self.layer.insertSublayer(gradientLayer, at: 3)
+        
+        switch(shape) {
+        case .flat:
+            break
+        case .concave:
+            gradientLayer.cornerRadius = self.cornerRadius
+            gradientLayer.frame = self.bounds
+            gradientLayer.colors = [
+                gradientColor0?.cgColor as Any, gradientColor1?.cgColor as Any
+            ]
+            gradientLayer.locations = [0, 1]
+            self.layer.insertSublayer(gradientLayer, at: 3)
+            
+            switch(direction) {
+            case .topLeft:
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+            case .topRight:
+                gradientLayer.startPoint = CGPoint(x: 1, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            case .bottomLeft:
+                gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+            case .bottomRight:
+                gradientLayer.startPoint = CGPoint(x: 1, y: 1)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 0)
+            }
+        case .convex:
+            gradientLayer.cornerRadius = self.cornerRadius
+            gradientLayer.frame = self.bounds
+            gradientLayer.colors = [
+                gradientColor1?.cgColor as Any, gradientColor0?.cgColor as Any
+            ]
+            gradientLayer.locations = [0, 1]
+            self.layer.insertSublayer(gradientLayer, at: 3)
+            
+            switch(direction) {
+            case .topLeft:
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+            case .topRight:
+                gradientLayer.startPoint = CGPoint(x: 1, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            case .bottomLeft:
+                gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+            case .bottomRight:
+                gradientLayer.startPoint = CGPoint(x: 1, y: 1)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 0)
+            }
+        case .pressed:
+            switch(direction) {
+            case .topLeft:
+                self.addInnerShadow(onSide: .topAndLeft, shadowColor: shadowColor0!.cgColor, shadowSize: shadowRadius/2, cornerRadius: cornerRadius, shadowOpacity: opacity)
+                self.addInnerShadow(onSide: .bottomAndRight, shadowColor: shadowColor1!.cgColor, shadowSize: shadowRadius/2, cornerRadius: cornerRadius, shadowOpacity: opacity)
+            case .topRight:
+                self.addInnerShadow(onSide: .topAndRight, shadowColor: shadowColor0!.cgColor, shadowSize: shadowRadius/2, cornerRadius: cornerRadius, shadowOpacity: opacity)
+                self.addInnerShadow(onSide: .bottomAndLeft, shadowColor: shadowColor1!.cgColor, shadowSize: shadowRadius/2, cornerRadius: cornerRadius, shadowOpacity: opacity)
+            case .bottomLeft:
+                self.addInnerShadow(onSide: .bottomAndLeft, shadowColor: shadowColor0!.cgColor, shadowSize: shadowRadius/2, cornerRadius: cornerRadius, shadowOpacity: opacity)
+                self.addInnerShadow(onSide: .topAndRight, shadowColor: shadowColor1!.cgColor, shadowSize: shadowRadius/2, cornerRadius: cornerRadius, shadowOpacity: opacity)
+            case .bottomRight:
+                self.addInnerShadow(onSide: .bottomAndRight, shadowColor: shadowColor0!.cgColor, shadowSize: shadowRadius/2, cornerRadius: cornerRadius, shadowOpacity: opacity)
+                self.addInnerShadow(onSide: .topAndLeft, shadowColor: shadowColor1!.cgColor, shadowSize: shadowRadius/2, cornerRadius: cornerRadius, shadowOpacity: opacity)
+            }
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setup()
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        setup()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+    }
+}
+
+extension UIColor {
+    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        var red: CGFloat = 0.0
+        var green: CGFloat = 0.0
+        var blue: CGFloat = 0.0
+        var alpha: CGFloat = 0.0
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+        return (red: red, green: green, blue: blue, alpha: alpha)
+    }
+
+    var redComponent: CGFloat {
+        var red: CGFloat = 0.0
+        getRed(&red, green: nil, blue: nil, alpha: nil)
+
+        return red
+    }
+
+    var greenComponent: CGFloat {
+        var green: CGFloat = 0.0
+        getRed(nil, green: &green, blue: nil, alpha: nil)
+
+        return green
+    }
+
+    var blueComponent: CGFloat {
+        var blue: CGFloat = 0.0
+        getRed(nil, green: nil, blue: &blue, alpha: nil)
+
+        return blue
+    }
+
+    var alphaComponent: CGFloat {
+        var alpha: CGFloat = 0.0
+        getRed(nil, green: nil, blue: nil, alpha: &alpha)
+
+        return alpha
+    }
+}
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
+    
+    static func contrastRatio(between color1: UIColor, and color2: UIColor) -> CGFloat {
+        let luminance1 = color1.luminance()
+        let luminance2 = color2.luminance()
+
+        let luminanceDarker = min(luminance1, luminance2)
+        let luminanceLighter = max(luminance1, luminance2)
+
+        return (luminanceLighter + 0.05) / (luminanceDarker + 0.05)
+    }
+
+    func contrastRatio(with color: UIColor) -> CGFloat {
+        return UIColor.contrastRatio(between: self, and: color)
+    }
+    
+    func luminance() -> CGFloat {
+        let ciColor = CIColor(color: self)
+        
+        func adjust(colorComponent: CGFloat) -> CGFloat {
+            return (colorComponent < 0.04045) ?
+                (colorComponent / 12.92) : pow((colorComponent + 0.055) / 1.055, 2.4)
+        }
+        
+        return 0.2126 * adjust(colorComponent: ciColor.red)
+            + 0.7152 * adjust(colorComponent: ciColor.green)
+            + 0.0722 * adjust(colorComponent: ciColor.blue)
+    }
+}
+
+extension UIView
+{
+    public enum InnerShadowSide
+    {
+        case all, left, right, top, bottom, topAndLeft, topAndRight, bottomAndLeft, bottomAndRight, exceptLeft, exceptRight, exceptTop, exceptBottom
+    }
+    
+    public func addInnerShadow(onSide: InnerShadowSide, shadowColor: CGColor, shadowSize: CGFloat, cornerRadius: CGFloat = 0.0, shadowOpacity: Float)
+    {
+        let shadowLayer = CAShapeLayer()
+        shadowLayer.frame = bounds
+        shadowLayer.shadowColor = shadowColor
+        shadowLayer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        shadowLayer.shadowOpacity = shadowOpacity
+        shadowLayer.shadowRadius = shadowSize
+        shadowLayer.fillRule = CAShapeLayerFillRule.evenOdd
+        
+        let shadowPath = CGMutablePath()
+        let insetRect = bounds.insetBy(dx: -shadowSize * 2.0, dy: -shadowSize * 2.0)
+        let innerFrame: CGRect = { () -> CGRect in
+            switch onSide
+            {
+                case .all:
+                    return CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: frame.size.height)
+                case .left:
+                    return CGRect(x: 0.0, y: -shadowSize * 2.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 4.0)
+                case .right:
+                    return CGRect(x: -shadowSize * 2.0, y: -shadowSize * 2.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 4.0)
+                case .top:
+                    return CGRect(x: -shadowSize * 2.0, y: 0.0, width: frame.size.width + shadowSize * 4.0, height: frame.size.height + shadowSize * 2.0)
+                case.bottom:
+                    return CGRect(x: -shadowSize * 2.0, y: -shadowSize * 2.0, width: frame.size.width + shadowSize * 4.0, height: frame.size.height + shadowSize * 2.0)
+                case .topAndLeft:
+                    return CGRect(x: 0.0, y: 0.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 2.0)
+                case .topAndRight:
+                    return CGRect(x: -shadowSize * 2.0, y: 0.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 2.0)
+                case .bottomAndLeft:
+                    return CGRect(x: 0.0, y: -shadowSize * 2.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 2.0)
+                case .bottomAndRight:
+                    return CGRect(x: -shadowSize * 2.0, y: -shadowSize * 2.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 2.0)
+                case .exceptLeft:
+                    return CGRect(x: -shadowSize * 2.0, y: 0.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height)
+                case .exceptRight:
+                    return CGRect(x: 0.0, y: 0.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height)
+                case .exceptTop:
+                    return CGRect(x: 0.0, y: -shadowSize * 2.0, width: frame.size.width, height: frame.size.height + shadowSize * 2.0)
+                case .exceptBottom:
+                    return CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: frame.size.height + shadowSize * 2.0)
+            }
+        }()
+        
+        shadowPath.addRect(insetRect)
+        shadowPath.addRect(innerFrame)
+        shadowLayer.path = shadowPath
+        layer.addSublayer(shadowLayer)
+        clipsToBounds = true
+    }
+}

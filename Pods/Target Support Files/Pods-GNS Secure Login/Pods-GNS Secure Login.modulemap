@@ -1,0 +1,6 @@
+framework module Pods_GNS_Secure_Login {
+  umbrella header "Pods-GNS Secure Login-umbrella.h"
+
+  export *
+  module * { export * }
+}

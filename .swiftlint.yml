@@ -1,0 +1,34 @@
+disabled_rules:
+- vertical_whitespace
+- trailing_whitespace
+- unused_setter_value
+- computed_accessors_order
+- legacy_constructor
+- redundant_objc_attribute
+- superfluous_disable_command
+- notification_center_detachment
+- weak_delegate
+
+excluded:
+- Pods
+
+analyzer_rules:
+line_length: 800
+large_tuple: 5
+type_name:
+  min_length: 4 # only warning
+  max_length: # warning and error
+    warning: 100
+    error: 150
+  excluded: iPhone # excluded via string
+  allowed_symbols: ["_"] # these are allowed in type names
+cyclomatic_complexity: 20
+identifier_name:
+  min_length: 2
+  allowed_symbols: ["_"]
+function_parameter_count: 10
+function_body_length: 100
+nesting:
+    type_level: 5
+function_parameter_count: 16
+line_length: 800

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="gTV-IL-0wX" customClass="ApplicationsListHeaderCollectionViewCell" customModule="GNS_Secure_Login" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4E-X7-Mpg">
+                        <rect key="frame" x="34" y="27.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="IYD-7X-suf"/>
+                            <constraint firstAttribute="width" secondItem="q4E-X7-Mpg" secondAttribute="height" id="T6N-Pk-BUI"/>
+                        </constraints>
+                        <state key="normal" image="back"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="backButtonDidPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="iIY-oT-ah6"/>
+                        </connections>
+                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Ylb-dD-j26">
+                        <rect key="frame" x="319" y="50" width="61" height="25"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBY-ae-XOv">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="dkd-g1-6P5"/>
+                                    <constraint firstAttribute="width" secondItem="cBY-ae-XOv" secondAttribute="height" id="ozn-qE-Pi8"/>
+                                </constraints>
+                                <state key="normal" image="search"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="searchButtonDidPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="68x-Fi-GRo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="px2-Np-rlD">
+                                <rect key="frame" x="36" y="0.0" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="1FZ-P8-heH"/>
+                                    <constraint firstAttribute="width" secondItem="px2-Np-rlD" secondAttribute="height" id="YGf-f7-9wt"/>
+                                </constraints>
+                                <state key="normal" image="sort"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sortButtonDidPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="v47-om-rVz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </stackView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="q4E-X7-Mpg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="34" id="FUa-41-CJY"/>
+                <constraint firstItem="Ylb-dD-j26" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="q4E-X7-Mpg" secondAttribute="trailing" constant="34" id="NXr-Xc-jMF"/>
+                <constraint firstAttribute="trailing" secondItem="Ylb-dD-j26" secondAttribute="trailing" constant="34" id="Tvx-PX-VHt"/>
+                <constraint firstItem="Ylb-dD-j26" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="50" id="VYQ-2s-meJ"/>
+                <constraint firstItem="q4E-X7-Mpg" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="oyG-wL-crb"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ylb-dD-j26" secondAttribute="bottom" constant="5" id="wTt-3s-YzZ"/>
+            </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="139" y="78"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="back" width="25" height="25"/>
+        <image name="search" width="18.5" height="18.5"/>
+        <image name="sort" width="25" height="20.5"/>
+    </resources>
+</document>

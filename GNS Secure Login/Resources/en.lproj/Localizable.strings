@@ -1,0 +1,58 @@
+/* 
+  Localizable.strings
+  GNS Secure Login
+
+  Created by Peter Bassem on 21/07/2021.
+  
+*/
+
+// MARK: - AuthViewController
+"company_name" = "Company name";
+"username" = "Username";
+"password" = "Password";
+
+// MARK: - HomeViewController
+"home.scanBadge" = "Scan Badge";
+"home.formatBadge" = "Format Badge";
+"home.emergencyContacts" = "Emergency Contacts";
+"home.settings" = "Settings";
+
+// MARK: - ScanBadgeViewController
+"card_is_valid" = "Card is valid";
+
+// MARK: - ApplicationsListViewController
+"search_applications" = "Search Applications";
+
+// MARK: - EditApplicationCredentialsViewController
+"save" = "Save";
+
+// MARK: - FormatBadgeViewController
+"are_you_sure" = "Are you sure you want to format badge?";
+"no" = "No";
+"yes" = "Yes";
+"format_success" = "Badge Formatted Successfully.";
+"format_fail" = "Couldn't format the badge. Please try again later.";
+
+// MARK: - SettingsViewController
+"bluetooth" = "Bluetooth";
+"available_badges" = "Available Badges";
+"availble_readers" = "Available Readers";
+"rssi" = "RSSI:";
+
+// MARK: - BluetoothDeviceDetailsViewController
+"action.fingerprintEnrollment" = "Fingerprint Enrollment";
+"action.formatBadge" = "Format Badge";
+
+// MARK: - FingerprintEnrollmentViewController
+"fingerprint_enrollment_message" = "Enroll center of fingerprint, \nlift your finger and press a different part of it on the sensor";
+"first_finger.first_time" = "First Finger - First Time";
+"first_finger.second_time" = "First Finger - Second Time";
+"first_finger.third_time" = "First Finger - Third Time";
+"second_finger.first_time" = "Second Finger - First Time";
+"second_finger.second_time" = "Second Finger - Second Time";
+"second_finger.third_time" = "Second Finger - Third Time";
+"enrollment_done_successfully" = "Enrollment Done Successfully";
+
+// MARK: - FingerprintVideoTutorialViewController
+"button.skip" = "Skip";
+"button.cancel" = "Cancel";

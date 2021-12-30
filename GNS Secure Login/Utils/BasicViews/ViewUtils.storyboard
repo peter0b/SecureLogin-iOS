@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--No Internet Connection View Controller-->
+        <scene sceneID="e5Y-OW-ebG">
+            <objects>
+                <viewController storyboardIdentifier="no_internet_connection_view_controller" id="V5O-9C-lye" customClass="NoInternetConnectionViewController" customModule="Login_Location" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kQE-ut-AEA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hA0-vR-gyB">
+                                <rect key="frame" x="123.5" y="218.5" width="128" height="230.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ghH-zy-Weg">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2U-9C-gDJ">
+                                        <rect key="frame" x="43" y="144" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Bqf-jW-2kA">
+                                        <rect key="frame" x="10" y="180.5" width="108" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3jl-tH-6uu">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1H-nV-ml0">
+                                                <rect key="frame" x="66" y="0.0" width="42" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hA0-vR-gyB" firstAttribute="centerX" secondItem="kQE-ut-AEA" secondAttribute="centerX" id="88e-OZ-1iX"/>
+                            <constraint firstItem="hA0-vR-gyB" firstAttribute="centerY" secondItem="kQE-ut-AEA" secondAttribute="centerY" id="Nrc-MN-nxa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="U64-dw-M8A"/>
+                    </view>
+                    <connections>
+                        <outlet property="noInternetConnectionLabel" destination="s2U-9C-gDJ" id="1H7-9Z-Xhg"/>
+                        <outlet property="noInternetImageView" destination="ghH-zy-Weg" id="Ot9-E7-tge"/>
+                        <outlet property="noInternetRefreshArrowImageView" destination="3jl-tH-6uu" id="VVE-6I-QEc"/>
+                        <outlet property="pressAgainLabel" destination="n1H-nV-ml0" id="XEj-HD-M90"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hYu-Da-H1V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="401" y="821"/>
+        </scene>
+        <!--No Data View Controller-->
+        <scene sceneID="wzA-96-Y8p">
+            <objects>
+                <viewController storyboardIdentifier="no_data_view_controller" id="V4E-zH-chp" customClass="NoDataViewController" customModule="Login_Location" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i34-o4-8Af">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="uWu-5O-rKZ">
+                                <rect key="frame" x="123.5" y="243.5" width="128" height="180.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XKO-J5-Zdq">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9r-xX-Xbs">
+                                        <rect key="frame" x="43" y="160" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uWu-5O-rKZ" firstAttribute="centerX" secondItem="i34-o4-8Af" secondAttribute="centerX" id="FFX-Xk-xOX"/>
+                            <constraint firstItem="uWu-5O-rKZ" firstAttribute="centerY" secondItem="i34-o4-8Af" secondAttribute="centerY" id="bv1-KQ-9dN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jAn-Of-Ewo"/>
+                    </view>
+                    <connections>
+                        <outlet property="noDataAvailableLabel" destination="W9r-xX-Xbs" id="y4F-Hh-G39"/>
+                        <outlet property="noDataImageView" destination="XKO-J5-Zdq" id="lud-SZ-x50"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kyK-Xo-oZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071" y="821"/>
+        </scene>
+    </scenes>
+</document>
