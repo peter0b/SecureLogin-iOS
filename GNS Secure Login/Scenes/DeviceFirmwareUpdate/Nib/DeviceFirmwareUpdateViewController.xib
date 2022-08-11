@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceFirmwareUpdateViewController" customModule="GNS_Secure_Login" customModuleProvider="target">
+            <connections>
+                <outlet property="applicationLabel" destination="iJE-ve-MQ2" id="JIZ-6q-cHs"/>
+                <outlet property="dfuTitleLabel" destination="UI3-VO-jin" id="OAm-vf-1ez"/>
+                <outlet property="fileNameLabel" destination="y9Q-rG-mgO" id="uCw-rP-0Iv"/>
+                <outlet property="sizeLabel" destination="RwV-V6-aEa" id="ff5-Gl-kaJ"/>
+                <outlet property="statusLabel" destination="gk2-u3-YUj" id="Aic-hu-Q93"/>
+                <outlet property="uploadFileButton" destination="rjW-ei-p3T" id="aKN-CM-lud"/>
+                <outlet property="uploadPorgressValueLabel" destination="M6B-Fn-zWX" id="uOC-Lk-lQM"/>
+                <outlet property="uploadProgessView" destination="c0u-pr-cjA" id="bue-y0-bDj"/>
+                <outlet property="uploadStatusLabel" destination="qGz-s7-mZ3" id="PQw-dQ-6Po"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQc-kN-nM3">
+                    <rect key="frame" x="16" y="71.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="CQc-kN-nM3" secondAttribute="height" id="158-Ip-HME"/>
+                        <constraint firstAttribute="width" constant="25" id="uDN-bG-Pgh"/>
+                    </constraints>
+                    <state key="normal" image="back"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="backButtonDidPressed:" destination="-1" eventType="touchUpInside" id="tWt-CB-jHW"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcF-am-3mL">
+                    <rect key="frame" x="176.5" y="70.5" width="61" height="27"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="22"/>
+                    <color key="textColor" name="Text4"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="dfu"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xEE-MQ-ld2">
+                    <rect key="frame" x="16" y="113.5" width="382" height="207"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJE-ve-MQ2">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
+                            <color key="backgroundColor" name="Background5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="4Ju-ib-Ncc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="22"/>
+                            <color key="textColor" name="TextSecondary"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="application"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mLw-Is-JW4">
+                            <rect key="frame" x="16" y="56" width="350" height="79"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9Q-rG-mgO">
+                                    <rect key="frame" x="0.0" y="0.0" width="46.5" height="21"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                    <color key="textColor" name="Text4"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RwV-V6-aEa">
+                                    <rect key="frame" x="0.0" y="29" width="46.5" height="21"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                    <color key="textColor" name="Text4"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk2-u3-YUj">
+                                    <rect key="frame" x="0.0" y="58" width="46.5" height="21"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                    <color key="textColor" name="Text4"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckt-oY-7ZU">
+                            <rect key="frame" x="16" y="151" width="350" height="40"/>
+                            <color key="backgroundColor" name="Background5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="pfu-8T-Rlf"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <fontDescription key="titleFontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                <color key="baseForegroundColor" name="TextSecondary"/>
+                            </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="select_file"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="selectFileButtonDidPressed:" destination="-1" eventType="touchUpInside" id="v2g-Al-RvB"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="mLw-Is-JW4" secondAttribute="trailing" constant="16" id="2bk-h9-WNw"/>
+                        <constraint firstItem="iJE-ve-MQ2" firstAttribute="leading" secondItem="xEE-MQ-ld2" secondAttribute="leading" id="QuR-Oz-LcR"/>
+                        <constraint firstAttribute="trailing" secondItem="ckt-oY-7ZU" secondAttribute="trailing" constant="16" id="caP-fl-H3B"/>
+                        <constraint firstItem="mLw-Is-JW4" firstAttribute="leading" secondItem="xEE-MQ-ld2" secondAttribute="leading" constant="16" id="hhD-dJ-UQV"/>
+                        <constraint firstAttribute="trailing" secondItem="iJE-ve-MQ2" secondAttribute="trailing" id="kN8-rM-Ywh"/>
+                        <constraint firstAttribute="bottom" secondItem="ckt-oY-7ZU" secondAttribute="bottom" constant="16" id="lYy-XG-RnL"/>
+                        <constraint firstItem="ckt-oY-7ZU" firstAttribute="leading" secondItem="xEE-MQ-ld2" secondAttribute="leading" constant="16" id="n41-VD-nrA"/>
+                        <constraint firstItem="mLw-Is-JW4" firstAttribute="top" secondItem="iJE-ve-MQ2" secondAttribute="bottom" constant="16" id="qCw-f3-NiT"/>
+                        <constraint firstItem="iJE-ve-MQ2" firstAttribute="top" secondItem="xEE-MQ-ld2" secondAttribute="top" id="uEo-uB-Kpm"/>
+                        <constraint firstItem="ckt-oY-7ZU" firstAttribute="top" secondItem="mLw-Is-JW4" secondAttribute="bottom" constant="16" id="ypx-m7-tbH"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadow_Color">
+                            <color key="value" name="PrimaryShadow"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetX">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig8-xY-nGI">
+                    <rect key="frame" x="16" y="352.5" width="382" height="173.5"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UI3-VO-jin">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
+                            <color key="backgroundColor" name="Background5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="I22-rS-z3g"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="22"/>
+                            <color key="textColor" name="TextSecondary"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="dfu_title"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjW-ei-p3T">
+                            <rect key="frame" x="16" y="56" width="350" height="40"/>
+                            <color key="backgroundColor" name="Background5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="l8t-LM-TMA"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <fontDescription key="titleFontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                <color key="baseForegroundColor" name="TextSecondary"/>
+                            </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="upload"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="uploadFileButtonDidPressed:" destination="-1" eventType="touchUpInside" id="aE3-JX-IHk"/>
+                            </connections>
+                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="p36-4r-1ME">
+                            <rect key="frame" x="16" y="128" width="350" height="29.5"/>
+                            <subviews>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGz-s7-mZ3">
+                                    <rect key="frame" x="156" y="0.0" width="38.5" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                    <color key="textColor" name="Text4"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c0u-pr-cjA">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="4"/>
+                                </progressView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6B-Fn-zWX">
+                                    <rect key="frame" x="156" y="12" width="38.5" height="17.5"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                    <color key="textColor" name="Text4"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="0%"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="c0u-pr-cjA" firstAttribute="width" secondItem="p36-4r-1ME" secondAttribute="width" id="XsR-EF-sR0"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="rjW-ei-p3T" firstAttribute="leading" secondItem="Ig8-xY-nGI" secondAttribute="leading" constant="16" id="4HK-GU-7tx"/>
+                        <constraint firstItem="p36-4r-1ME" firstAttribute="leading" secondItem="Ig8-xY-nGI" secondAttribute="leading" constant="16" id="6aK-qR-0wQ"/>
+                        <constraint firstItem="p36-4r-1ME" firstAttribute="top" secondItem="rjW-ei-p3T" secondAttribute="bottom" constant="32" id="8qD-iU-u7C"/>
+                        <constraint firstAttribute="trailing" secondItem="p36-4r-1ME" secondAttribute="trailing" constant="16" id="HVD-hG-3rv"/>
+                        <constraint firstItem="rjW-ei-p3T" firstAttribute="top" secondItem="UI3-VO-jin" secondAttribute="bottom" constant="16" id="KDj-6o-ho8"/>
+                        <constraint firstAttribute="trailing" secondItem="UI3-VO-jin" secondAttribute="trailing" id="LaZ-IS-CYn"/>
+                        <constraint firstAttribute="trailing" secondItem="rjW-ei-p3T" secondAttribute="trailing" constant="16" id="MgO-in-XwI"/>
+                        <constraint firstAttribute="bottom" secondItem="p36-4r-1ME" secondAttribute="bottom" constant="16" id="X2Q-7h-2vw"/>
+                        <constraint firstItem="UI3-VO-jin" firstAttribute="leading" secondItem="Ig8-xY-nGI" secondAttribute="leading" id="oLU-He-ddL"/>
+                        <constraint firstItem="UI3-VO-jin" firstAttribute="top" secondItem="Ig8-xY-nGI" secondAttribute="top" id="yVA-rc-7X9"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadow_Color">
+                            <color key="value" name="PrimaryShadow"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetX">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" name="Background3"/>
+            <constraints>
+                <constraint firstItem="PcF-am-3mL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2Jw-o3-Jnk"/>
+                <constraint firstAttribute="trailing" secondItem="Ig8-xY-nGI" secondAttribute="trailing" constant="16" id="3Xg-hg-bwi"/>
+                <constraint firstAttribute="trailing" secondItem="xEE-MQ-ld2" secondAttribute="trailing" constant="16" id="Bqj-qp-R0F"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PcF-am-3mL" secondAttribute="trailing" constant="16" id="J9L-dP-xa2"/>
+                <constraint firstItem="CQc-kN-nM3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="27.399999999999999" id="OSk-Lv-0Gi"/>
+                <constraint firstItem="Ig8-xY-nGI" firstAttribute="top" secondItem="xEE-MQ-ld2" secondAttribute="bottom" constant="32" id="QNA-cX-ngd"/>
+                <constraint firstItem="CQc-kN-nM3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="gKw-w7-PmG"/>
+                <constraint firstItem="PcF-am-3mL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CQc-kN-nM3" secondAttribute="trailing" constant="16" id="pr6-Df-AAa"/>
+                <constraint firstItem="xEE-MQ-ld2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="r2m-ST-UrS"/>
+                <constraint firstItem="xEE-MQ-ld2" firstAttribute="top" secondItem="PcF-am-3mL" secondAttribute="bottom" constant="16" id="tOX-Jf-xSa"/>
+                <constraint firstItem="PcF-am-3mL" firstAttribute="centerY" secondItem="CQc-kN-nM3" secondAttribute="centerY" id="yaV-kb-gxw"/>
+                <constraint firstItem="Ig8-xY-nGI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="zQe-pB-xMv"/>
+            </constraints>
+            <point key="canvasLocation" x="-178" y="112"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back" width="25" height="25"/>
+        <namedColor name="Background3">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Background5">
+            <color red="0.0" green="0.074509803921568626" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryShadow">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Text4">
+            <color red="0.054901960784313725" green="0.047058823529411764" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextSecondary">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

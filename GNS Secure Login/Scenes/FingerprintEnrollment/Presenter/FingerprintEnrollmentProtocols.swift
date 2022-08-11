@@ -20,6 +20,7 @@ protocol FingerprintEnrollmentPresenterProtocol: BasePresenterProtocol {
     var view: FingerprintEnrollmentViewProtocol? { get set }
     
     func viewDidLoad()
+    func didFinishFingerEnrollmentProcess()
 
     func performBack()
     func performShowVideoTutorialViewController()
@@ -27,14 +28,15 @@ protocol FingerprintEnrollmentPresenterProtocol: BasePresenterProtocol {
 
 protocol FingerprintEnrollmentRouterProtocol: BaseRouterProtocol {
     func showFingerprintVideoTutorialViewController()
+    func presentEnrollmentAlertViewController(enrollAlertType: EnrollAlertType, badgeSerial: String?, completionAction: @escaping EnrollAlertCompletion)
 }
 
 protocol FingerprintEnrollmentInteractorInputProtocol: BaseInteractorInputProtocol {
     var presenter: FingerprintEnrollmentInteractorOutputProtocol? { get set }
-    
+    func updateEnrollmentCount(params: GetApplicationsList)
 }
 
 protocol FingerprintEnrollmentInteractorOutputProtocol: BaseInteractorOutputProtocol {
-    
-    
+    func fetchingUpdateEnrollmentCountSuccessfully()
+    func fetchingCheckBadeEnrollmentCountWithError(_ error: String)
 }

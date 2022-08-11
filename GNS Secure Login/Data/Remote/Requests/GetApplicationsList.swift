@@ -8,7 +8,9 @@
 import Foundation
 
 struct GetApplicationsList: Codable {
-    let commandType: Int
-    let gnsLicense: String
-    let cardUID: String
+    let commandType: Int?
+    let gnsLicense: String?
+    let cardUID: String?
+    let badgeSerial: String?
+    let metaData: String?
 }

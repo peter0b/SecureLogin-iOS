@@ -21,4 +21,8 @@ class ApplicationsListUseCase {
     func getApplications(params: GetApplicationsList, completion: @escaping (Result<ApplicationsList, NetworkErrorType>) -> Void) {
         applicationsListRepository.getApplications(params: params, completion: completion)
     }
+    
+    func getCheckEnrollmentCount(params: GetApplicationsList, completion: @escaping (Result<ApplicationsList, NetworkErrorType>) -> Void) {
+        applicationsListRepository .getCheckEnrollmentCount(params: params, completion: completion)
+    }
 }

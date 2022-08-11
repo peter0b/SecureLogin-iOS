@@ -42,10 +42,17 @@ extension ApplicationsListPresenter: ApplicationsListPresenterProtocol {
     
     func getApplicationsList(withCardUID cardUID: String) {
         view?.showLoading()
+//        let params = GetApplicationsList(
+//            commandType: AuthCommandType.LoadingUserGNSSites.rawValue,
+//            gnsLicense: "1PJYSP5-1VEF1E0-6Z4HVC-1VE83VG",
+//            cardUID: cardUID
+//        )
         let params = GetApplicationsList(
             commandType: AuthCommandType.LoadingUserGNSSites.rawValue,
-            gnsLicense: "1PJYSP5-1VEF1E0-6Z4HVC-1VE83VG",
-            cardUID: "0892CA75F74B3228012C98FB06BC162F"
+            gnsLicense: GlobalConstants.gnsLicense.rawValue,
+            cardUID: cardUID,
+            badgeSerial: nil,
+            metaData: nil
         )
         interactor.getApplications(withParams: params)
     }
@@ -133,21 +140,24 @@ extension ApplicationsListPresenter {
         let application = isSearching ? filteredApplications[index] : applications[index]
         print(application)
         
-        let sites: [SiteVM] = [application].map { SiteVM(code: $0.siteCode, username: "", password: "", writeDone: false) }
-        view?.readApplicationCredentials(sites: sites)
+//        let sites: [SiteVM] = [application].map { SiteVM(code: $0.siteCode, username: "", password: "", writeDone: false) }
+//        view?.readApplicationCredentials(sites: sites)
         
         
-//        var url = application.loginUrl ?? ""
-//        if !url.contains("https") {
-//            url = "https://\(url)"
-//        }
-////        print(url)
-////        router.openURL(withUrl: url.removeWhitespace(), javascript: application.script ?? "")
+        var url = application.loginUrl ?? ""
+        if !url.contains("https") {
+            url = "https://\(url)"
+        }
+        
+//        print(url)
+//        router.openURL(withUrl: url.removeWhitespace(), javascript: application.script ?? "")
+        print(application.script ?? "")
 //        view?.showWebPage(withUrl: url.removeWhitespace(), javascript: application.script ?? "")
     }
     
     func didEditApplication(atIndex index: Int, card: Card, mifareDesfireHelper: MiFareDesfireHelper) {
         let application = isSearching ? filteredApplications[index] : applications[index]
-        router.navigateToEditApplicationCredentialsViewController(card: card, mifareDesfireHelper: mifareDesfireHelper, application: application)
+        let sites: [SiteVM] = [application].map { SiteVM(code: $0.siteCode, username: "", password: "", writeDone: false) }
+        router.navigateToEditApplicationCredentialsViewController(card: card, mifareDesfireHelper: mifareDesfireHelper, application: application, sites: sites)
     }
 }

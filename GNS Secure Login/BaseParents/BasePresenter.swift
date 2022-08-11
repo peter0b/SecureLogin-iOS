@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BasePresenter {
+class BasePresenter: NSObject {
     
     func showErrorAlert(error: String) {
         AlertView.AlertViewBuilder().setTitle(with: LocalizationSystem.sharedInstance.localizedStringForKey(key: "error", comment: ""))

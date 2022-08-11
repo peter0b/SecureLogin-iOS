@@ -283,7 +283,8 @@ class MiFareDesfireHelper {
                             self.siteConfigFileBytes = response!.responseData
                             let sitesArr = configContent.split(separator: "\n").map { String($0) }.filter { !$0.isEmpty }
                             sitesArr.forEach { item in
-                                if !self.nFCSitesDictionary.containsKey(key: item) {
+                                let itemKey = String(item.dropLast(2))
+                                if !self.nFCSitesDictionary.containsKey(key: itemKey) {
                                     let fileIndex = Int(String(item.last!)) ?? 0
                                     let newKey = item.prefix(Int(self.siteIdSize))
                                     self.nFCSitesDictionary[String(newKey)] = fileIndex
@@ -295,7 +296,7 @@ class MiFareDesfireHelper {
                             }
                             
                             let deletedSites = self.nFCSitesDictionary.filter { !sitesCodes.contains($0.key) }
-                            //                                let  addedSites = self.nFCSitesDictionary.filter { sitesCodes.contains($0.key) }
+//                                let  addedSites = self.nFCSitesDictionary.filter { sitesCodes.contains($0.key) }
                             let addedSites = sitesCodes.filter { !self.nFCSitesDictionary.keys.contains($0) }
                             
                             if !deletedSites.isEmpty {
@@ -307,6 +308,9 @@ class MiFareDesfireHelper {
                                             self.deleteFile(fileID: bytePair.fileId) { r, e in
                                                 if r?.success == true {
                                                     self.nFCSitesDictionary.removeValue(forKey: dItem.key)
+//                                                    self.nFCSitesDictionary = self.sortAndReconfigDictionary(dict: &self.nFCSitesDictionary, removedSiteKey: dItem.key)
+                                                    
+                                                    self.getFreeFilesIdsAndAddNewSites(addedSites: sitesCodes, complete: complete)
                                                 }
                                             }
                                         }
@@ -316,6 +320,7 @@ class MiFareDesfireHelper {
                             
                             if !addedSites.isEmpty {
                                 self.getFreeFilesIdsAndAddNewSites(addedSites: sitesCodes, complete: complete)
+//                                self.getFreeFilesIdsAndAddNewSitslses(addedSites: addedSites, complete: complete)
                             }
                             
                             complete(response, error)
@@ -327,118 +332,21 @@ class MiFareDesfireHelper {
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-        //        selectApplication(aid: aidConfig) { [weak self] sr, se in
-        //            guard let self = self else { return }
-        //            self.readData(fileID: self.configFileId, file_size: self.configFileIDSize) { res, err in
-        //                if let error = err {
-        //                    complete(nil, error)
-        //                    return
-        //                }
-        //                if let response = res {
-        //                    if !response.success {
-        //                        complete(nil, nil)
-        //                        return
-        //                    }
-        //                    if response.responseData.allSatisfy({ $0 == 0x00 }) {
-        //                        let addedSites = sitesCodes.filter { !self.nFCSitesDictionary.keys.contains($0) }
-        //                        self.getFreeFilesIdsAndAddNewSites(addedSites: addedSites, complete: complete)
-        //                    } else {
-        //                        print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-        //                        self.compareSites(sites: sitesCodes, responseArray: response.responseData)
-        //
-        //
-        ////                            let configFileSize: Int = try MifareUtils.toInt32(bytes: Array(response.responseData.dropFirst(4)), index: 0)
-        ////                        self.readData(fileID: self.configFileId, file_size: self.configFileIDSize) { re, er in
-        ////                            if !re!.success {
-        ////                                complete(re, er)
-        ////                                return
-        ////                            }
-        ////                            print(re!.responseData)
-        ////                            let configContent = self.getConfigFileContent(responseData: re!.responseData)
-        ////                            self.siteConfigFileBytes = re!.responseData
-        ////                            #warning("Is the sitesArr result is right?!!!!")
-        ////                            let sitesArr = configContent.split(separator: " ").filter { !$0.isEmpty }
-        ////                            print(sitesArr)
-        ////                            sitesArr.forEach { item in
-        ////                                #warning("Check containsKey func validation (test)")
-        ////                                #warning("How could be nfc sites dictionary non-empty here??")
-        ////                                if self.nFCSitesDictionary.containsKey(key: String(item)) {
-        ////                                    let fileIndex = Int(String(item.last!)) ?? 0
-        ////                                    let newKey = String(item).prefix(Int(self.siteIdSize))
-        ////                                    self.nFCSitesDictionary[String(newKey)] = fileIndex
-        ////                                }
-        ////
-        ////                                if sitesCodes.count == 0 {
-        ////                                    complete(re, er)
-        ////                                    return
-        ////                                }
-        ////
-        ////                                let deletedSites = self.nFCSitesDictionary.filter { !sitesCodes.contains($0.key) }
-        ////                                if !deletedSites.isEmpty {
-        ////                                    for (_, dItem) in deletedSites.enumerated() {
-        ////                                        let dicIndexId = UInt8(dItem.value)
-        ////                                        let bytePair: ([UInt8], UInt8) = self.getAppIdAndFileId(dicIndex: dicIndexId)
-        ////                                        self.selectApplication(aid: bytePair.0) { selectr, selecte in
-        ////                                            self.deleteFile(fileID: bytePair.1) { r, e in
-        ////                                                if r!.success {
-        ////                                                    self.nFCSitesDictionary.removeValue(forKey: dItem.key)
-        ////                                                }
-        ////                                            }
-        ////                                        }
-        ////                                    }
-        ////                                }
-        ////
-        ////                                if sitesCodes.isEmpty {
-        ////                                    self.getFreeFilesIdsAndAddNewSites(addedSites: sitesCodes, complete: complete)
-        ////                                }
-        ////                                complete(re, er)
-        ////                            }
-        ////
-        //////                            sitesArr.forEach { item in
-        //////                                if self.nFCSitesDictionary[String(item)] != nil {
-        //////                                    let fileIndex = Int(String(item.last!)) ?? 0
-        //////                                    let newKey = item.prefix(Int(self.siteIdSize))
-        //////                                    self.nFCSitesDictionary[String(newKey)] = fileIndex
-        //////                                }
-        //////                            }
-        //////                            if sitesCodes.count == 0 {
-        //////                                complete(re, er)
-        //////                                return
-        //////                            }
-        //////                            // A70 , A71 // input
-        //////                            // A70 , A80 // exist config file
-        //////                            // A70 , A71 new config
-        //////                            // get newsites and updatedsites and deleted sites
-        //////                            let addedSites = sitesCodes.filter { !self.nFCSitesDictionary.keys.contains($0) }
-        //////                            let deletedSites = self.nFCSitesDictionary.filter { !sitesCodes.contains($0.key) }
-        //////                            if !deletedSites.isEmpty {
-        //////                                for (_, dItem) in deletedSites.enumerated() {
-        //////                                    let dicIndexId = UInt8(dItem.value)
-        //////                                    let bytePair: ([UInt8], UInt8) = self.getAppIdAndFileId(dicIndex: dicIndexId)
-        //////                                    self.selectApplication(aid: bytePair.0) { selectr, selecte in
-        //////                                        self.deleteFile(fileID: bytePair.1) { r, e in
-        //////                                            if r!.success {
-        //////                                                self.nFCSitesDictionary.removeValue(forKey: dItem.key)
-        //////                                            }
-        //////                                        }
-        //////                                    }
-        //////                                }
-        //////                            }
-        //////                            if !addedSites.isEmpty {
-        //////                                self.getFreeFilesIdsAndAddNewSites(addedSites: addedSites, complete: complete)
-        //////                            }
-        //////                            complete(re, er)
-        ////                        }
-        //                    }
-        //                }
-        //            }
-        //        }
+    }
+    
+    func sortAndReconfigDictionary( dict: inout [String: Int], removedSiteKey: String) -> [String: Int] {
+        var updatedDictionary = [String: Int]()
+        let deletedIndex = dict.removeValue(forKey: removedSiteKey)
+        if let deletedIndex = deletedIndex {
+            for (key, value) in dict {
+                if value  < deletedIndex {
+                    updatedDictionary[key] = value
+                } else {
+                    updatedDictionary[key] = value - 1
+                }
+            }
+        }
+        return updatedDictionary
     }
     
     private func getFreeFilesIdsAndAddNewSites(addedSites: [String]?, complete: @escaping OnCommandComplete) {
@@ -450,28 +358,9 @@ class MiFareDesfireHelper {
             guard let self = self else { return }
             if fetchRes && data != nil, let foundedIds = data as? [UInt8?] {
                 blankIndexes = blankIndexes.filter { !foundedIds.contains($0) }
+                
                 self.addNewSitesToIndexer(addedSites: addedSites, complete: complete, blankIndexes: blankIndexes)
             }
-            
-            
-//            if fetchRes && data != nil {
-//                if let foundedIds = data as? [UInt8?] {
-//                    blankIndexes = blankIndexes.filter { !foundedIds.contains($0) }
-//                    if blankIndexes.count == 16 {
-//                        self.fetchFilesIdsFromApplication(aids: self.aidSites2) { r2, data2, error2 in
-//                            if r2 && data2 != nil {
-//                                if let foundedIds2 = data as? [UInt8] {
-//                                    let map = foundedIds2.map { $0 + 16 }
-//                                    blankIndexes = blankIndexes.filter { !map.contains($0) }
-//                                }
-//                                self.addNewSitesToIndexer(addedSites: addedSites, complete: complete, blankIndexes: blankIndexes)
-//                            }
-//                        }
-//                    } else {
-//                        self.addNewSitesToIndexer(addedSites: addedSites, complete: complete, blankIndexes: blankIndexes)
-//                    }
-//                }
-//            }
         }
     }
     
@@ -480,7 +369,7 @@ class MiFareDesfireHelper {
             self?.getFileIDs(complete: { res, err in
                 complete(res?.success ?? false, res?.responseData, err)
             })
-            complete(false, nil, se)
+//            complete(false, nil, se)
         }
     }
     
@@ -674,16 +563,26 @@ class MiFareDesfireHelper {
             let _fileId = UInt8(_fileIdInt % 16)
             
             selectApplication(aid: appId, complete: { [unowned self] _, _ in
-                self.writeData(fileID: _fileId, bytes: siteDataBytes) { [unowned self] writeR, witeE in
-                    if !writeR!.success { // 240 mean's FILE_NOT_FOUND
-                        // Create file and write data
-                        self.createFile(fileID: _fileId, file_size: Int(self.maxSiteFileSize), complete: { [unowned self] _, _ in
-                            self.writeData(fileID: _fileId, bytes: siteDataBytes) { [unowned self] _, _ in
-                                self.site?.writeDone = true
-                            }
-                        })
-                    } else {
-                        site.writeDone = true
+                /*
+                 check if file is empty --> write data directly
+                                   else --> delete data in file then write data.
+                 */
+                self.deleteFile(fileID: _fileId) { response, error in
+                    if let error = error {
+                        print("Failed to delete file:", error)
+                        return
+                    }
+                    self.writeData(fileID: _fileId, bytes: siteDataBytes) { [unowned self] writeR, witeE in
+                        if !writeR!.success { // 240 mean's FILE_NOT_FOUND
+                            // Create file and write data
+                            self.createFile(fileID: _fileId, file_size: Int(self.maxSiteFileSize), complete: { [unowned self] _, _ in
+                                self.writeData(fileID: _fileId, bytes: siteDataBytes) { [unowned self] _, _ in
+                                    self.site?.writeDone = true
+                                }
+                            })
+                        } else {
+                            site.writeDone = true
+                        }
                     }
                 }
             })
@@ -698,8 +597,6 @@ class MiFareDesfireHelper {
         } while str.count < maxLength
         return s1
     }
-    
-    
     
     private func getVersion_Recursion(ins: ApduEnums.Ins, complete: @escaping OnCommandComplete) -> Void {
         let apduCommand = ApduCommand.init(commandName: "getVersion", cla: ApduEnums.Cla.ProprietaryCla9x, ins: ins, p1: 0x00, p2: 0x00, le: 0x00, data: []);

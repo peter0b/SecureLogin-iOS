@@ -19,7 +19,11 @@ class BluetoothDeviceDetailsRouter: BaseRouter, BluetoothDeviceDetailsRouterProt
         view.ble = ble
         view.rssi = rssi
         view.bluetoothType = bluetoothType
-        let interactor = BluetoothDeviceDetailsInteractor()
+        let interactor = BluetoothDeviceDetailsInteractor(
+            useCase: ApplicationsListUseCase(
+                applicationsListRepository: ApplicationsListRepositryImp()
+            )
+        )
         let router = BluetoothDeviceDetailsRouter()
         let presenter = BluetoothDeviceDetailsPresenter(view: view, interactor: interactor, router: router, ble: ble, bluetoothType: bluetoothType)
         view.presenter = presenter
@@ -27,14 +31,26 @@ class BluetoothDeviceDetailsRouter: BaseRouter, BluetoothDeviceDetailsRouterProt
         router.viewController = view
         return view
     }
+    
+    func presentEnrollmentAlertViewController(enrollAlertType: EnrollAlertType, badgeSerial: String?, completionAction: @escaping EnrollAlertCompletion) {
+        let enrollmentAlertViewController = EnrollmentAlertRouter.createModule(enrollAlertType: enrollAlertType, badgeSerial: badgeSerial, completionAction: completionAction)
+        enrollmentAlertViewController.modalPresentationStyle = .overFullScreen
+        enrollmentAlertViewController.modalTransitionStyle = .crossDissolve
+        viewController?.present(enrollmentAlertViewController, animated: true)
+    }
 
-    func navigateToFingerprintEnrollmentViewController(withBluetoothDevice ble: CBPeripheral) {
-        let fingerprintEnrollmentViewController = FingerprintEnrollmentRouter.createModule(withBluetooth: ble)
+    func navigateToFingerprintEnrollmentViewController(withBluetoothDevice ble: CBPeripheral, enrollAlertType: EnrollAlertType, badgeSerial: String, firstEnrollment: Bool) {
+        let fingerprintEnrollmentViewController = FingerprintEnrollmentRouter.createModule(withBluetooth: ble, enrollAlertType: enrollAlertType, badgeSerial: badgeSerial, firstEnrollment: firstEnrollment)
         viewController?.navigationController?.pushViewController(fingerprintEnrollmentViewController, animated: true)
     }
     
     func navigateToFormatBadgeViewController() {
         let formatBadgeViewController = FormatBadgeRouter.createModule()
         viewController?.navigationController?.pushViewController(formatBadgeViewController, animated: true)
+    }
+    
+    func navigateToUpdateBadgeViewController(dfuPeripheral: CBPeripheral) {
+        let updateBadgeViewController = DeviceFirmwareUpdateRouter.createModule(dfuPeripheral: dfuPeripheral)
+        viewController?.navigationController?.pushViewController(updateBadgeViewController, animated: true)
     }
 }

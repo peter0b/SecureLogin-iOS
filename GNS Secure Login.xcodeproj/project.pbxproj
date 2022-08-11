@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		597123B3994856EDD4123AB1 /* Pods_GNS_Secure_Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF090424E40777357DB2426 /* Pods_GNS_Secure_Login.framework */; };
 		B961FD56EBEE927C7A12EB64 /* Pods_GNS_Secure_Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14D12F25C1E985D4A89E8D7 /* Pods_GNS_Secure_Login.framework */; };
+		E002418828A3CBC600B5E0E4 /* MetaDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002418728A3CBC500B5E0E4 /* MetaDataResponse.swift */; };
+		E002418A28A3D35E00B5E0E4 /* BlockingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002418928A3D35E00B5E0E4 /* BlockingActivityIndicator.swift */; };
+		E002419328A3E7C500B5E0E4 /* EnrollmentAlertViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002418C28A3E7C400B5E0E4 /* EnrollmentAlertViewController+Delegates.swift */; };
+		E002419428A3E7C500B5E0E4 /* EnrollmentAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002418D28A3E7C400B5E0E4 /* EnrollmentAlertPresenter.swift */; };
+		E002419528A3E7C500B5E0E4 /* EnrollmentAlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002418E28A3E7C400B5E0E4 /* EnrollmentAlertRouter.swift */; };
+		E002419628A3E7C500B5E0E4 /* EnrollmentAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002418F28A3E7C400B5E0E4 /* EnrollmentAlertViewController.swift */; };
+		E002419728A3E7C500B5E0E4 /* EnrollmentAlertProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002419028A3E7C400B5E0E4 /* EnrollmentAlertProtocols.swift */; };
+		E002419828A3E7C500B5E0E4 /* EnrollmentAlertInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002419128A3E7C400B5E0E4 /* EnrollmentAlertInteractor.swift */; };
+		E002419928A3E7C500B5E0E4 /* EnrollmentAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002419228A3E7C400B5E0E4 /* EnrollmentAlertViewController.xib */; };
+		E00241A128A3E83500B5E0E4 /* EnrollAlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00241A028A3E83500B5E0E4 /* EnrollAlertType.swift */; };
+		E00241A328A3E91D00B5E0E4 /* EnrollmentAlertUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00241A228A3E91D00B5E0E4 /* EnrollmentAlertUseCase.swift */; };
+		E00241A528A3FE7C00B5E0E4 /* PinValidationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00241A428A3FE7C00B5E0E4 /* PinValidationModel.swift */; };
 		E01808052779D2F80011A20A /* EditApplicationCredentialsViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01807FE2779D2F80011A20A /* EditApplicationCredentialsViewController+Delegates.swift */; };
 		E01808062779D2F80011A20A /* EditApplicationCredentialsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01807FF2779D2F80011A20A /* EditApplicationCredentialsPresenter.swift */; };
 		E01808072779D2F80011A20A /* EditApplicationCredentialsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01808002779D2F80011A20A /* EditApplicationCredentialsRouter.swift */; };
@@ -16,6 +28,14 @@
 		E01808092779D2F80011A20A /* EditApplicationCredentialsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01808022779D2F80011A20A /* EditApplicationCredentialsProtocols.swift */; };
 		E018080A2779D2F80011A20A /* EditApplicationCredentialsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01808032779D2F80011A20A /* EditApplicationCredentialsInteractor.swift */; };
 		E018080B2779D2F80011A20A /* EditApplicationCredentialsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01808042779D2F80011A20A /* EditApplicationCredentialsViewController.xib */; };
+		E01A865828A517AA00E87334 /* FingerprintEnrollmentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01A865728A517AA00E87334 /* FingerprintEnrollmentUseCase.swift */; };
+		E01D7E2D277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D7E26277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController+Delegates.swift */; };
+		E01D7E2E277DE73B00EFD2CE /* DeviceFirmwareUpdatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D7E27277DE73B00EFD2CE /* DeviceFirmwareUpdatePresenter.swift */; };
+		E01D7E2F277DE73B00EFD2CE /* DeviceFirmwareUpdateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D7E28277DE73B00EFD2CE /* DeviceFirmwareUpdateRouter.swift */; };
+		E01D7E30277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D7E29277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController.swift */; };
+		E01D7E31277DE73B00EFD2CE /* DeviceFirmwareUpdateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D7E2A277DE73B00EFD2CE /* DeviceFirmwareUpdateProtocols.swift */; };
+		E01D7E32277DE73B00EFD2CE /* DeviceFirmwareUpdateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D7E2B277DE73B00EFD2CE /* DeviceFirmwareUpdateInteractor.swift */; };
+		E01D7E33277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01D7E2C277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController.xib */; };
 		E030097E26CC0C02005CEE76 /* BackgroudImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030097D26CC0C02005CEE76 /* BackgroudImageView.swift */; };
 		E033227C26AEE7EF00535C71 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E033227B26AEE7EF00535C71 /* OrientationManager.swift */; };
 		E03E1B08271C5E8000AD057A /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E1B07271C5E8000AD057A /* DictionaryExtensions.swift */; };
@@ -165,6 +185,14 @@
 		E0842E6026A861F800581B63 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0842E5E26A861F800581B63 /* AuthViewController.xib */; };
 		E0887F92270482AB00A5F12A /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0887F91270482AB00A5F12A /* DataExtensions.swift */; };
 		E09D2980277238CD00872F68 /* MainAppInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09D297F277238CD00872F68 /* MainAppInteractor.swift */; };
+		E09F1C7B278F037800860913 /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F1C7A278F037800860913 /* AuthRequest.swift */; };
+		E09F1C7E278F099800860913 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F1C7D278F099800860913 /* AuthResponse.swift */; };
+		E09F1C80278F0B0E00860913 /* RemoteAuthDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F1C7F278F0B0E00860913 /* RemoteAuthDataSource.swift */; };
+		E09F1C82278F0DF100860913 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F1C81278F0DF100860913 /* AuthRepository.swift */; };
+		E09F1C84278F0E0900860913 /* AuthRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F1C83278F0E0900860913 /* AuthRepositoryImp.swift */; };
+		E09F1C86278F0F9A00860913 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F1C85278F0F9A00860913 /* AuthUseCase.swift */; };
+		E09F1C88278F278200860913 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E09F1C87278F278200860913 /* AuthenticationServices.framework */; };
+		E09F1C8A278F4CD800860913 /* LocalAuthDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F1C89278F4CD800860913 /* LocalAuthDataSource.swift */; };
 		E0A6564626AA2E8A00999324 /* HomeItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6564426AA2E8A00999324 /* HomeItemTableViewCell.swift */; };
 		E0A6564726AA2E8A00999324 /* HomeItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A6564526AA2E8A00999324 /* HomeItemTableViewCell.xib */; };
 		E0B281C426B80160000E0139 /* ICardStateMonitorListenerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B281C326B80160000E0139 /* ICardStateMonitorListenerDelegate.swift */; };
@@ -403,6 +431,18 @@
 		6676FE2FBCF5616B6DBE3711 /* Pods-GNS Secure Login.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GNS Secure Login.release.xcconfig"; path = "Target Support Files/Pods-GNS Secure Login/Pods-GNS Secure Login.release.xcconfig"; sourceTree = "<group>"; };
 		A14D12F25C1E985D4A89E8D7 /* Pods_GNS_Secure_Login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GNS_Secure_Login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADF090424E40777357DB2426 /* Pods_GNS_Secure_Login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GNS_Secure_Login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E002418728A3CBC500B5E0E4 /* MetaDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataResponse.swift; sourceTree = "<group>"; };
+		E002418928A3D35E00B5E0E4 /* BlockingActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockingActivityIndicator.swift; sourceTree = "<group>"; };
+		E002418C28A3E7C400B5E0E4 /* EnrollmentAlertViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnrollmentAlertViewController+Delegates.swift"; sourceTree = "<group>"; };
+		E002418D28A3E7C400B5E0E4 /* EnrollmentAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentAlertPresenter.swift; sourceTree = "<group>"; };
+		E002418E28A3E7C400B5E0E4 /* EnrollmentAlertRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentAlertRouter.swift; sourceTree = "<group>"; };
+		E002418F28A3E7C400B5E0E4 /* EnrollmentAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentAlertViewController.swift; sourceTree = "<group>"; };
+		E002419028A3E7C400B5E0E4 /* EnrollmentAlertProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentAlertProtocols.swift; sourceTree = "<group>"; };
+		E002419128A3E7C400B5E0E4 /* EnrollmentAlertInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentAlertInteractor.swift; sourceTree = "<group>"; };
+		E002419228A3E7C400B5E0E4 /* EnrollmentAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnrollmentAlertViewController.xib; sourceTree = "<group>"; };
+		E00241A028A3E83500B5E0E4 /* EnrollAlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollAlertType.swift; sourceTree = "<group>"; };
+		E00241A228A3E91D00B5E0E4 /* EnrollmentAlertUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentAlertUseCase.swift; sourceTree = "<group>"; };
+		E00241A428A3FE7C00B5E0E4 /* PinValidationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinValidationModel.swift; sourceTree = "<group>"; };
 		E01807FE2779D2F80011A20A /* EditApplicationCredentialsViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditApplicationCredentialsViewController+Delegates.swift"; sourceTree = "<group>"; };
 		E01807FF2779D2F80011A20A /* EditApplicationCredentialsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditApplicationCredentialsPresenter.swift; sourceTree = "<group>"; };
 		E01808002779D2F80011A20A /* EditApplicationCredentialsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditApplicationCredentialsRouter.swift; sourceTree = "<group>"; };
@@ -410,6 +450,14 @@
 		E01808022779D2F80011A20A /* EditApplicationCredentialsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditApplicationCredentialsProtocols.swift; sourceTree = "<group>"; };
 		E01808032779D2F80011A20A /* EditApplicationCredentialsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditApplicationCredentialsInteractor.swift; sourceTree = "<group>"; };
 		E01808042779D2F80011A20A /* EditApplicationCredentialsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditApplicationCredentialsViewController.xib; sourceTree = "<group>"; };
+		E01A865728A517AA00E87334 /* FingerprintEnrollmentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintEnrollmentUseCase.swift; sourceTree = "<group>"; };
+		E01D7E26277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceFirmwareUpdateViewController+Delegates.swift"; sourceTree = "<group>"; };
+		E01D7E27277DE73B00EFD2CE /* DeviceFirmwareUpdatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFirmwareUpdatePresenter.swift; sourceTree = "<group>"; };
+		E01D7E28277DE73B00EFD2CE /* DeviceFirmwareUpdateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFirmwareUpdateRouter.swift; sourceTree = "<group>"; };
+		E01D7E29277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFirmwareUpdateViewController.swift; sourceTree = "<group>"; };
+		E01D7E2A277DE73B00EFD2CE /* DeviceFirmwareUpdateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFirmwareUpdateProtocols.swift; sourceTree = "<group>"; };
+		E01D7E2B277DE73B00EFD2CE /* DeviceFirmwareUpdateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFirmwareUpdateInteractor.swift; sourceTree = "<group>"; };
+		E01D7E2C277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceFirmwareUpdateViewController.xib; sourceTree = "<group>"; };
 		E030097D26CC0C02005CEE76 /* BackgroudImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroudImageView.swift; sourceTree = "<group>"; };
 		E033227B26AEE7EF00535C71 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationManager.swift; sourceTree = "<group>"; };
 		E03E1B07271C5E8000AD057A /* DictionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
@@ -543,6 +591,14 @@
 		E0887F91270482AB00A5F12A /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		E094A42E27737D8300ACC736 /* Conversions.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Conversions.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E09D297F277238CD00872F68 /* MainAppInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppInteractor.swift; sourceTree = "<group>"; };
+		E09F1C7A278F037800860913 /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
+		E09F1C7D278F099800860913 /* AuthResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		E09F1C7F278F0B0E00860913 /* RemoteAuthDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAuthDataSource.swift; sourceTree = "<group>"; };
+		E09F1C81278F0DF100860913 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		E09F1C83278F0E0900860913 /* AuthRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImp.swift; sourceTree = "<group>"; };
+		E09F1C85278F0F9A00860913 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		E09F1C87278F278200860913 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		E09F1C89278F4CD800860913 /* LocalAuthDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthDataSource.swift; sourceTree = "<group>"; };
 		E0A6564426AA2E8A00999324 /* HomeItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemTableViewCell.swift; sourceTree = "<group>"; };
 		E0A6564526AA2E8A00999324 /* HomeItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeItemTableViewCell.xib; sourceTree = "<group>"; };
 		E0B281C326B80160000E0139 /* ICardStateMonitorListenerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICardStateMonitorListenerDelegate.swift; sourceTree = "<group>"; };
@@ -769,6 +825,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				597123B3994856EDD4123AB1 /* Pods_GNS_Secure_Login.framework in Frameworks */,
+				E09F1C88278F278200860913 /* AuthenticationServices.framework in Frameworks */,
 				E0C5949626AF03A000DAF912 /* SmartCardIO.xcframework in Frameworks */,
 				E0C5949B26AF03F700DAF912 /* ACSSmartCardIO.xcframework in Frameworks */,
 				B961FD56EBEE927C7A12EB64 /* Pods_GNS_Secure_Login.framework in Frameworks */,
@@ -793,6 +850,61 @@
 				6676FE2FBCF5616B6DBE3711 /* Pods-GNS Secure Login.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E002418B28A3E7AA00B5E0E4 /* EnrollmentAlert */ = {
+			isa = PBXGroup;
+			children = (
+				E002419E28A3E7E900B5E0E4 /* Nib */,
+				E002419D28A3E7E500B5E0E4 /* View */,
+				E002419C28A3E7DE00B5E0E4 /* Presenter */,
+				E002419B28A3E7DB00B5E0E4 /* Interactor */,
+				E002419A28A3E7D400B5E0E4 /* Router */,
+			);
+			path = EnrollmentAlert;
+			sourceTree = "<group>";
+		};
+		E002419A28A3E7D400B5E0E4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				E002418E28A3E7C400B5E0E4 /* EnrollmentAlertRouter.swift */,
+			);
+			name = Router;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		E002419B28A3E7DB00B5E0E4 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E002419128A3E7C400B5E0E4 /* EnrollmentAlertInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		E002419C28A3E7DE00B5E0E4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E002419028A3E7C400B5E0E4 /* EnrollmentAlertProtocols.swift */,
+				E002418D28A3E7C400B5E0E4 /* EnrollmentAlertPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E002419D28A3E7E500B5E0E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E002418F28A3E7C400B5E0E4 /* EnrollmentAlertViewController.swift */,
+				E002418C28A3E7C400B5E0E4 /* EnrollmentAlertViewController+Delegates.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E002419E28A3E7E900B5E0E4 /* Nib */ = {
+			isa = PBXGroup;
+			children = (
+				E002419228A3E7C400B5E0E4 /* EnrollmentAlertViewController.xib */,
+			);
+			path = Nib;
 			sourceTree = "<group>";
 		};
 		E01807FD2779D2DE0011A20A /* EditApplicationCredentials */ = {
@@ -845,6 +957,60 @@
 			isa = PBXGroup;
 			children = (
 				E01808042779D2F80011A20A /* EditApplicationCredentialsViewController.xib */,
+			);
+			path = Nib;
+			sourceTree = "<group>";
+		};
+		E01D7E25277DE71000EFD2CE /* DeviceFirmwareUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				E01D7E38277DE75100EFD2CE /* Nib */,
+				E01D7E37277DE74800EFD2CE /* View */,
+				E01D7E36277DE74600EFD2CE /* Presenter */,
+				E01D7E35277DE74500EFD2CE /* Interactor */,
+				E01D7E34277DE74200EFD2CE /* Router */,
+			);
+			path = DeviceFirmwareUpdate;
+			sourceTree = "<group>";
+		};
+		E01D7E34277DE74200EFD2CE /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				E01D7E28277DE73B00EFD2CE /* DeviceFirmwareUpdateRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		E01D7E35277DE74500EFD2CE /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E01D7E2B277DE73B00EFD2CE /* DeviceFirmwareUpdateInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		E01D7E36277DE74600EFD2CE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E01D7E2A277DE73B00EFD2CE /* DeviceFirmwareUpdateProtocols.swift */,
+				E01D7E27277DE73B00EFD2CE /* DeviceFirmwareUpdatePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E01D7E37277DE74800EFD2CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E01D7E29277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController.swift */,
+				E01D7E26277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController+Delegates.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E01D7E38277DE75100EFD2CE /* Nib */ = {
+			isa = PBXGroup;
+			children = (
+				E01D7E2C277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController.xib */,
 			);
 			path = Nib;
 			sourceTree = "<group>";
@@ -1448,6 +1614,7 @@
 				E0542C5826C00B5900C4AB48 /* BluetoothType.swift */,
 				E083A18226D27F47002C5FC3 /* BadgeActions.swift */,
 				E083A18426D27FC6002C5FC3 /* ReaderActions.swift */,
+				E00241A028A3E83500B5E0E4 /* EnrollAlertType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1474,6 +1641,7 @@
 		E0842DEB26A85E5900581B63 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				E09F1C81278F0DF100860913 /* AuthRepository.swift */,
 				E0B281F326B90079000E0139 /* ApplicationsListRepositry.swift */,
 			);
 			path = Repositories;
@@ -1482,7 +1650,10 @@
 		E0842DF126A85E5900581B63 /* Use Cases */ = {
 			isa = PBXGroup;
 			children = (
+				E09F1C85278F0F9A00860913 /* AuthUseCase.swift */,
 				E0B281F126B9003C000E0139 /* ApplicationsListUseCase.swift */,
+				E00241A228A3E91D00B5E0E4 /* EnrollmentAlertUseCase.swift */,
+				E01A865728A517AA00E87334 /* FingerprintEnrollmentUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -1509,6 +1680,7 @@
 		E0842E0326A85E9500581B63 /* Remote Data Source */ = {
 			isa = PBXGroup;
 			children = (
+				E09F1C7F278F0B0E00860913 /* RemoteAuthDataSource.swift */,
 				E0B281FA26B902CC000E0139 /* RemoteApplicationsListDataSource.swift */,
 			);
 			path = "Remote Data Source";
@@ -1517,6 +1689,7 @@
 		E0842E0926A85E9500581B63 /* Repositories Implementation */ = {
 			isa = PBXGroup;
 			children = (
+				E09F1C83278F0E0900860913 /* AuthRepositoryImp.swift */,
 				E0B281F826B90195000E0139 /* ApplicationsListRepositryImp.swift */,
 			);
 			path = "Repositories Implementation";
@@ -1550,6 +1723,7 @@
 		E0842E1326A85E9500581B63 /* Local Data Source */ = {
 			isa = PBXGroup;
 			children = (
+				E09F1C89278F4CD800860913 /* LocalAuthDataSource.swift */,
 			);
 			path = "Local Data Source";
 			sourceTree = "<group>";
@@ -1567,6 +1741,7 @@
 		E0842E1A26A85E9500581B63 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				E09F1C7C278F098500860913 /* Auth */,
 				E0B281F726B90136000E0139 /* ApplicationsList */,
 			);
 			path = Response;
@@ -1576,6 +1751,7 @@
 			isa = PBXGroup;
 			children = (
 				E0B281ED26B8F93B000E0139 /* GetApplicationsList.swift */,
+				E09F1C7A278F037800860913 /* AuthRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -1601,9 +1777,11 @@
 				E08012AA26AD7FC9002C75D0 /* EmergencyContacts */,
 				E08012A926AD7FC8002C75D0 /* Settings */,
 				E083A15426D266FE002C5FC3 /* BluetoothDeviceDetails */,
+				E002418B28A3E7AA00B5E0E4 /* EnrollmentAlert */,
 				E0C01FA426D69F49002FFDAE /* FingerprintEnrollment */,
 				E05C691C26DB9A5B00B404BC /* FingerprintVideoTutorial */,
 				E08012AB26AD7FCB002C75D0 /* FormatBadge */,
+				E01D7E25277DE71000EFD2CE /* DeviceFirmwareUpdate */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1648,6 +1826,14 @@
 				E0842E5E26A861F800581B63 /* AuthViewController.xib */,
 			);
 			path = Nib;
+			sourceTree = "<group>";
+		};
+		E09F1C7C278F098500860913 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E09F1C7D278F099800860913 /* AuthResponse.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		E0B281C526B810E2000E0139 /* ApplicationsList */ = {
@@ -1730,6 +1916,8 @@
 				E0B281EF26B8FF7F000E0139 /* ApplicationsList.swift */,
 				E0B281FE26B9083A000E0139 /* ApplicationsListMetaData.swift */,
 				E0B2820026B90BE5000E0139 /* SitesInfo.swift */,
+				E002418728A3CBC500B5E0E4 /* MetaDataResponse.swift */,
+				E00241A428A3FE7C00B5E0E4 /* PinValidationModel.swift */,
 			);
 			path = ApplicationsList;
 			sourceTree = "<group>";
@@ -1983,6 +2171,7 @@
 				E0B286A726BA716F000E0139 /* ActivityIndicatorManager.swift */,
 				E0B286A826BA716F000E0139 /* NVActivityIndicator */,
 				E0F3E5EF26E6664E009D5A77 /* IndicatorView.swift */,
+				E002418928A3D35E00B5E0E4 /* BlockingActivityIndicator.swift */,
 			);
 			path = ActivityIndicators;
 			sourceTree = "<group>";
@@ -2336,6 +2525,7 @@
 		E0C5949326AF028600DAF912 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E09F1C87278F278200860913 /* AuthenticationServices.framework */,
 				E0C5949426AF037200DAF912 /* SmartCardIO.xcframework */,
 				E0C5949926AF03F100DAF912 /* ACSSmartCardIO.xcframework */,
 				A14D12F25C1E985D4A89E8D7 /* Pods_GNS_Secure_Login.framework */,
@@ -2522,6 +2712,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E01D7E33277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController.xib in Resources */,
 				E05C693B26DBCCB400B404BC /* Enrollment_Tutorial.mp4 in Resources */,
 				E0B281E826B821C1000E0139 /* ApplicationItemCollectionViewCell.xib in Resources */,
 				E0842BFA26A8520800581B63 /* Montserrat-BoldItalic.ttf in Resources */,
@@ -2580,6 +2771,7 @@
 				E0B2875826BA7171000E0139 /* visibility_on.png in Resources */,
 				E0B2875B26BA7171000E0139 /* visibility_on@2x.png in Resources */,
 				E0B287AD26BA7172000E0139 /* AlertView.xib in Resources */,
+				E002419928A3E7C500B5E0E4 /* EnrollmentAlertViewController.xib in Resources */,
 				E0842C0926A8520800581B63 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				E0B2875726BA7171000E0139 /* visibility_off@3x.png in Resources */,
 				E0542C6826C16BC400C4AB48 /* ReadersCollectionViewController.xib in Resources */,
@@ -2692,6 +2884,7 @@
 				E0B2879126BA7172000E0139 /* DSSCollectionViewFlowLayout.swift in Sources */,
 				E0842C0E26A8522C00581B63 /* Montserrat-Light.ttf in Sources */,
 				E0B2876A26BA7171000E0139 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
+				E002419428A3E7C500B5E0E4 /* EnrollmentAlertPresenter.swift in Sources */,
 				E08012B926AD8000002C75D0 /* ScanBadgeInteractor.swift in Sources */,
 				E0B2872E26BA7171000E0139 /* StringExtensions.swift in Sources */,
 				E0B2873826BA7171000E0139 /* NetworkConstants.swift in Sources */,
@@ -2707,13 +2900,16 @@
 				E0B281E726B821C1000E0139 /* ApplicationItemCollectionViewCell.swift in Sources */,
 				E0B287B026BA7172000E0139 /* UITableViewExtensions.swift in Sources */,
 				E0842E4826A85E9500581B63 /* HeaderInterceptor.swift in Sources */,
+				E002419828A3E7C500B5E0E4 /* EnrollmentAlertInteractor.swift in Sources */,
 				E0B287A226BA7172000E0139 /* ASVideoPlayerController.swift in Sources */,
+				E00241A128A3E83500B5E0E4 /* EnrollAlertType.swift in Sources */,
 				E0B287C526BA7172000E0139 /* ViewControllerUtils.swift in Sources */,
 				E0B2874926BA7171000E0139 /* UnderlineTextButton.swift in Sources */,
 				E0B2875126BA7171000E0139 /* BundleUtil.swift in Sources */,
 				E0B2874226BA7171000E0139 /* UITextFieldHelper.swift in Sources */,
 				E0B2873B26BA7171000E0139 /* LocalizationHelper.swift in Sources */,
 				E0B2878226BA7172000E0139 /* NVActivityIndicatorAnimationPacman.swift in Sources */,
+				E002419528A3E7C500B5E0E4 /* EnrollmentAlertRouter.swift in Sources */,
 				E0842C0F26A8522C00581B63 /* Montserrat-ThinItalic.ttf in Sources */,
 				E0DC5AB826A9DF4800C1C14A /* HomePresenter.swift in Sources */,
 				E0DC5ABB26A9DF4800C1C14A /* HomeProtocols.swift in Sources */,
@@ -2726,17 +2922,21 @@
 				E0B2872C26BA7171000E0139 /* ArrayExtensions.swift in Sources */,
 				E0B287C426BA7172000E0139 /* UIImageViewExtensions.swift in Sources */,
 				E083A18A26D2FBD3002C5FC3 /* UIAlertControllerExtensions.swift in Sources */,
+				E002419628A3E7C500B5E0E4 /* EnrollmentAlertViewController.swift in Sources */,
 				E0B2878826BA7172000E0139 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
 				E0B281EE26B8F93B000E0139 /* GetApplicationsList.swift in Sources */,
+				E01A865828A517AA00E87334 /* FingerprintEnrollmentUseCase.swift in Sources */,
 				E0C01FB126D69F6C002FFDAE /* FingerprintEnrollmentProtocols.swift in Sources */,
 				E0842DBA26A85C1A00581B63 /* Typography.swift in Sources */,
 				E0B2873926BA7171000E0139 /* Constants.swift in Sources */,
 				E0842DBC26A85C1A00581B63 /* Font.swift in Sources */,
+				E01D7E2D277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController+Delegates.swift in Sources */,
 				E0887F92270482AB00A5F12A /* DataExtensions.swift in Sources */,
 				E0B2874626BA7171000E0139 /* EMSpinnerButton.swift in Sources */,
 				E080131126ADB24E002C75D0 /* SplitViewController.swift in Sources */,
 				E0B2877C26BA7172000E0139 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */,
 				E0B281EB26B8C911000E0139 /* ApplicationsListViewController.swift in Sources */,
+				E01D7E31277DE73B00EFD2CE /* DeviceFirmwareUpdateProtocols.swift in Sources */,
 				E0842C1126A8522C00581B63 /* Montserrat-Thin.ttf in Sources */,
 				E0B2875F26BA7171000E0139 /* PhoneNumberTextField.swift in Sources */,
 				E0B2877526BA7171000E0139 /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
@@ -2783,9 +2983,11 @@
 				E07BA5FF26B28185001A14A6 /* OnProcessLogDelegate.swift in Sources */,
 				E0B281E226B81E92000E0139 /* ApplicationsListHeaderCollectionViewCell.swift in Sources */,
 				E0B2875226BA7171000E0139 /* PasswordRule.swift in Sources */,
+				E09F1C84278F0E0900860913 /* AuthRepositoryImp.swift in Sources */,
 				E0842C2D26A8568100581B63 /* BaseCollectionViewCell.swift in Sources */,
 				E0842C1526A8522C00581B63 /* Montserrat-SemiBold.ttf in Sources */,
 				E0B281F426B90079000E0139 /* ApplicationsListRepositry.swift in Sources */,
+				E002419328A3E7C500B5E0E4 /* EnrollmentAlertViewController+Delegates.swift in Sources */,
 				E0B287BF26BA7172000E0139 /* UIViewExtensions.swift in Sources */,
 				E0B2875026BA7171000E0139 /* PasswordTextField.swift in Sources */,
 				E0B287B226BA7172000E0139 /* UIScrollViewExtensions.swift in Sources */,
@@ -2846,10 +3048,13 @@
 				E0842DBB26A85C1A00581B63 /* CustomFontDescriptor.swift in Sources */,
 				E0842E5726A861D900581B63 /* AuthRouter.swift in Sources */,
 				E0842C1926A8522C00581B63 /* Montserrat-Regular.ttf in Sources */,
+				E09F1C7E278F099800860913 /* AuthResponse.swift in Sources */,
 				E05C692F26DB9AA100B404BC /* FingerprintVideoTutorialViewController.swift in Sources */,
+				E002418828A3CBC600B5E0E4 /* MetaDataResponse.swift in Sources */,
 				E0842C3026A8568100581B63 /* BaseRouter.swift in Sources */,
 				E0B2876B26BA7171000E0139 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
 				E0842C3226A8568100581B63 /* BaseView.swift in Sources */,
+				E09F1C80278F0B0E00860913 /* RemoteAuthDataSource.swift in Sources */,
 				E0B2877F26BA7172000E0139 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
 				E0B2873326BA7171000E0139 /* ReachabilityManager.swift in Sources */,
 				E0C5949E26AF081100DAF912 /* BluetoothManger.swift in Sources */,
@@ -2863,6 +3068,7 @@
 				E0B2873D26BA7171000E0139 /* UIButtonHelper.swift in Sources */,
 				E0842DB926A85C1A00581B63 /* Icon.swift in Sources */,
 				E0B2876D26BA7171000E0139 /* NVActivityIndicatorAnimationBallDoubleBounce.swift in Sources */,
+				E00241A528A3FE7C00B5E0E4 /* PinValidationModel.swift in Sources */,
 				E0842C2C26A8568100581B63 /* BaseTableViewController.swift in Sources */,
 				E0B2878F26BA7172000E0139 /* CollectionView.swift in Sources */,
 				E0B2879926BA7172000E0139 /* CustomSlider.swift in Sources */,
@@ -2870,6 +3076,7 @@
 				E0B2877426BA7171000E0139 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
 				E08012B626AD8000002C75D0 /* ScanBadgeRouter.swift in Sources */,
 				E0842E5926A861D900581B63 /* AuthProtocols.swift in Sources */,
+				E09F1C8A278F4CD800860913 /* LocalAuthDataSource.swift in Sources */,
 				E0B287BB26BA7172000E0139 /* UIViewControllerExtensions.swift in Sources */,
 				E0C01FAE26D69F6C002FFDAE /* FingerprintEnrollmentPresenter.swift in Sources */,
 				E0B287B926BA7172000E0139 /* UITabBarExtensions.swift in Sources */,
@@ -2886,6 +3093,7 @@
 				E0B2873A26BA7171000E0139 /* LocalAuthentication.swift in Sources */,
 				E0B2876626BA7171000E0139 /* NVActivityIndicatorShape.swift in Sources */,
 				E0B2876C26BA7171000E0139 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */,
+				E00241A328A3E91D00B5E0E4 /* EnrollmentAlertUseCase.swift in Sources */,
 				E0842C1B26A8522C00581B63 /* Montserrat-SemiBoldItalic.ttf in Sources */,
 				E0B2874A26BA7171000E0139 /* MultiLineTitleButton.swift in Sources */,
 				E0DC5ACF26AA0EC100C1C14A /* HomeItemsEnum.swift in Sources */,
@@ -2893,6 +3101,7 @@
 				E0B2877A26BA7172000E0139 /* NVActivityIndicatorAnimationBlank.swift in Sources */,
 				E0842E5626A861D900581B63 /* AuthPresenter.swift in Sources */,
 				E0B287AE26BA7172000E0139 /* AlertView.swift in Sources */,
+				E002419728A3E7C500B5E0E4 /* EnrollmentAlertProtocols.swift in Sources */,
 				E0B287C226BA7172000E0139 /* UIProgressViewExtensions.swift in Sources */,
 				E0B2874026BA7171000E0139 /* UITextViewHelper.swift in Sources */,
 				E0B2873726BA7171000E0139 /* APIClient.swift in Sources */,
@@ -2902,8 +3111,11 @@
 				E0B2872A26BA7171000E0139 /* LocationService.swift in Sources */,
 				E0842C1C26A8522C00581B63 /* Montserrat-ExtraBoldItalic.ttf in Sources */,
 				E05C692726DB9A7400B404BC /* FingerprintVideoTutorialRouter.swift in Sources */,
+				E09F1C82278F0DF100860913 /* AuthRepository.swift in Sources */,
+				E002418A28A3D35E00B5E0E4 /* BlockingActivityIndicator.swift in Sources */,
 				E0B2875D26BA7171000E0139 /* AppTextField.swift in Sources */,
 				E0B2874826BA7171000E0139 /* UIBarButtonItem+Badge.swift in Sources */,
+				E01D7E30277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController.swift in Sources */,
 				E05C692526DB9A7400B404BC /* FingerprintVideoTutorialViewController+Delegates.swift in Sources */,
 				E0B2876726BA7171000E0139 /* NVActivityIndicatorView.swift in Sources */,
 				E0842E4926A85E9500581B63 /* APIRouter.swift in Sources */,
@@ -2911,6 +3123,7 @@
 				E0B287B626BA7172000E0139 /* UICollectionViewExtensions.swift in Sources */,
 				E0842DB726A85C1A00581B63 /* DesignSystem.swift in Sources */,
 				E0B2878C26BA7172000E0139 /* SplashAnimation.swift in Sources */,
+				E09F1C7B278F037800860913 /* AuthRequest.swift in Sources */,
 				E0B2878326BA7172000E0139 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				E0B2874126BA7171000E0139 /* UILabelHelper.swift in Sources */,
 				E07BA5C226B1B489001A14A6 /* CardStateMonitor.swift in Sources */,
@@ -2933,12 +3146,14 @@
 				E0B287AA26BA7172000E0139 /* AlertViewWithTwoButtons.swift in Sources */,
 				E0842E5A26A861D900581B63 /* AuthInteractor.swift in Sources */,
 				E0B287C926BA7173000E0139 /* PersistentDataHelper.swift in Sources */,
+				E09F1C86278F0F9A00860913 /* AuthUseCase.swift in Sources */,
 				E0542C5D26C1187E00C4AB48 /* BluetoothItemCollectionViewCell.swift in Sources */,
 				E05C693726DBA18700B404BC /* VideoPlayHelper.swift in Sources */,
 				E0B2874526BA7171000E0139 /* AlignableButton.swift in Sources */,
 				E0F2895026A6FB06008D8EFC /* SceneDelegate.swift in Sources */,
 				E08012E626AD8530002C75D0 /* EmergencyContactsViewController+Delegates.swift in Sources */,
 				E0C01F8526D67C43002FFDAE /* BatteryLevelView.swift in Sources */,
+				E01D7E32277DE73B00EFD2CE /* DeviceFirmwareUpdateInteractor.swift in Sources */,
 				E0842DB826A85C1A00581B63 /* Colors.swift in Sources */,
 				E0B2876326BA7171000E0139 /* NVActivityIndicatorPresenter.swift in Sources */,
 				E0B281F926B90195000E0139 /* ApplicationsListRepositryImp.swift in Sources */,
@@ -2951,6 +3166,7 @@
 				E0B2878926BA7172000E0139 /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				E07BA5CD26B26B59001A14A6 /* ApduEnums.swift in Sources */,
 				E0B287C826BA7173000E0139 /* UIColorExtensions.swift in Sources */,
+				E01D7E2E277DE73B00EFD2CE /* DeviceFirmwareUpdatePresenter.swift in Sources */,
 				E0B2879226BA7172000E0139 /* UICollectionViewLeftAlignedLayout.swift in Sources */,
 				E083A18026D27E98002C5FC3 /* ActionItemCollectionViewCell.swift in Sources */,
 				E0B287B126BA7172000E0139 /* AppDelegateExtensions.swift in Sources */,
@@ -2959,6 +3175,7 @@
 				E01808072779D2F80011A20A /* EditApplicationCredentialsRouter.swift in Sources */,
 				E0B2877D26BA7172000E0139 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
 				E083A16226D26787002C5FC3 /* BluetoothDeviceDetailsInteractor.swift in Sources */,
+				E01D7E2F277DE73B00EFD2CE /* DeviceFirmwareUpdateRouter.swift in Sources */,
 				E0B287B326BA7172000E0139 /* UITextFieldExtensions.swift in Sources */,
 				E0B2879A26BA7172000E0139 /* CaptionTextView.swift in Sources */,
 				E0B2878426BA7172000E0139 /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,

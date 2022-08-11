@@ -14,13 +14,17 @@ import CoreBluetooth
 
 class FingerprintEnrollmentRouter: BaseRouter, FingerprintEnrollmentRouterProtocol {
     
-    static func createModule(withBluetooth ble: CBPeripheral) -> UIViewController {
+    static func createModule(withBluetooth ble: CBPeripheral, enrollAlertType: EnrollAlertType, badgeSerial: String, firstEnrollment: Bool) -> UIViewController {
         let view =  FingerprintEnrollmentViewController()
         view.ble = ble
 
-        let interactor = FingerprintEnrollmentInteractor()
+        let interactor = FingerprintEnrollmentInteractor(
+            useCase: FingerprintEnrollmentUseCase(
+                applicationsListRepository: ApplicationsListRepositryImp()
+            )
+        )
         let router = FingerprintEnrollmentRouter()
-        let presenter = FingerprintEnrollmentPresenter(view: view, interactor: interactor, router: router)
+        let presenter = FingerprintEnrollmentPresenter(view: view, interactor: interactor, router: router, enrollAlertType: enrollAlertType, badgeSerial: badgeSerial, firstEnrollment: firstEnrollment)
         view.presenter = presenter
         interactor.presenter = presenter
         router.viewController = view
@@ -30,5 +34,12 @@ class FingerprintEnrollmentRouter: BaseRouter, FingerprintEnrollmentRouterProtoc
     func showFingerprintVideoTutorialViewController() {
         let fingerprintVideoTutorialViewController = FingerprintVideoTutorialRouter.createModule()
         viewController?.present(fingerprintVideoTutorialViewController, animated: true)
+    }
+    
+    func presentEnrollmentAlertViewController(enrollAlertType: EnrollAlertType, badgeSerial: String?, completionAction: @escaping EnrollAlertCompletion) {
+        let enrollmentAlertViewController = EnrollmentAlertRouter.createModule(enrollAlertType: enrollAlertType, badgeSerial: badgeSerial, completionAction: completionAction)
+        enrollmentAlertViewController.modalPresentationStyle = .overFullScreen
+        enrollmentAlertViewController.modalTransitionStyle = .crossDissolve
+        viewController?.present(enrollmentAlertViewController, animated: true)
     }
 }

@@ -82,7 +82,7 @@ extension FormatBadgeViewController {
                 }
             }
         } else {
-            print("Card not found")
+            showBottomMessage("Please insert card to format.")
         }
     }
 }

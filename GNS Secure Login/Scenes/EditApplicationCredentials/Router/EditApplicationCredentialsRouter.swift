@@ -15,8 +15,8 @@ import SmartCardIO
 
 class EditApplicationCredentialsRouter: BaseRouter, EditApplicationCredentialsRouterProtocol {
     
-    static func createModule(card: Card, mifareDesfireHelper: MiFareDesfireHelper, application: SitesInfo) -> UIViewController {
-        let view =  EditApplicationCredentialsViewController(card: card, mifareDesfireHelper: mifareDesfireHelper)
+    static func createModule(card: Card, mifareDesfireHelper: MiFareDesfireHelper, application: SitesInfo, sites: [SiteVM]) -> UIViewController {
+        let view =  EditApplicationCredentialsViewController(card: card, mifareDesfireHelper: mifareDesfireHelper, sites: sites)
 
         let interactor = EditApplicationCredentialsInteractor()
         let router = EditApplicationCredentialsRouter()

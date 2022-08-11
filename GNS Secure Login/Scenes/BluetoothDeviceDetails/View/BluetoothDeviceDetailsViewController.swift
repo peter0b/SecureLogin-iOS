@@ -23,6 +23,36 @@ final class BluetoothDeviceDetailsViewController: BaseViewController {
     
     var bluetoothManager: BluetoothManager!
     
+    private func connectReader(_ reader: CBPeripheral) {
+        bluetoothManager.mTerminals!.forEach {
+            if $0.name == (reader.name ?? "") {
+                bluetoothManager.cardTerminal = $0
+                bluetoothManager.getChardChannel()
+                bluetoothManager.connect(toPeripheral: ble)
+                bluetoothManager.getChardChannel()
+                bluetoothManager.stopScan()
+                print("ble connect")
+                do {
+                    let batteryLevel = try bluetoothManager.nfcManager.batteryLevel(terminal: $0, timeout: 10000)
+                    if batteryLevel < 0 {
+                        print("Battery Level: Not supported")
+                    } else {
+                        let batteryValueString = String(format: "%d%%", batteryLevel)
+                        NotificationCenter.default.post(name: .NfcBatteryStatus, object: nil, userInfo: ["battery": batteryValueString])
+                    }
+                } catch let error {
+                    print("Failed to get battery level:", error)
+                }
+            }
+            PersistentDataHelper.shared.readerPeripheral = ble.identifier.uuidString
+            PersistentDataHelper.shared.readerConnected = true
+            isConnected = true
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView.reloadData()
+            }
+        }
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +65,17 @@ final class BluetoothDeviceDetailsViewController: BaseViewController {
             if PersistentDataHelper.shared.readerConnected {
                 if let savedReaderIdentifier = PersistentDataHelper.shared.readerPeripheral {
                     if savedReaderIdentifier == ble.identifier.uuidString {
-                        self.bluetoothManager.mTerminals!.forEach {
-                            if $0.name == (ble.name ?? "") {
-                                self.bluetoothManager.cardTerminal = $0
-                                self.bluetoothManager.getChardChannel()
-                                self.bluetoothManager.stopScan()
-                                self.isConnected = true
-                                print("connected")
-                            }
-                        }
+                        connectReader(ble)
+//                        self.bluetoothManager.mTerminals!.forEach { _ in
+//                            connectReader(ble)
+////                            if $0.name == (ble.name ?? "") {
+////                                self.bluetoothManager.cardTerminal = $0
+////                                self.bluetoothManager.getChardChannel()
+////                                self.bluetoothManager.stopScan()
+////                                self.isConnected = true
+////                                print("connected")
+////                            }
+//                        }
                     }
                 }
             }
@@ -62,16 +94,7 @@ extension BluetoothDeviceDetailsViewController {
         collectionView.showsVerticalScrollIndicator = false
     }
     
-    private func connectReader(_ reader: CBPeripheral) {
-        bluetoothManager.mTerminals!.forEach {
-            if $0.name == (reader.name ?? "") {
-                bluetoothManager.cardTerminal = $0
-                bluetoothManager.connect(toPeripheral: ble)
-                bluetoothManager.getChardChannel()
-                bluetoothManager.stopScan()
-            }
-        }
-    }
+    
 }
 
 // MARK: - Selectors
@@ -89,7 +112,7 @@ extension BluetoothDeviceDetailsViewController: UICollectionViewDataSource {
         header.rssiLabel.text = "\("rssi".localized()) \(rssi ?? 0.0)"
         header.bluetoothType = bluetoothType
         header.delegate = self
-        header.isOnSwitch.isOn = isConnected
+        header.isOnSwitch.isOn = bluetoothManager.isPeripheralConnected
         return header
     }
     
@@ -114,7 +137,11 @@ extension BluetoothDeviceDetailsViewController: UICollectionViewDataSource {
 extension BluetoothDeviceDetailsViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if bluetoothManager.isPeripheralConnected {
         presenter.didSelectActionItem(withBluetoothDevice: ble, bluetoothType: bluetoothType, index: indexPath.item)
+        } else {
+            showBottomMessage("Badge not connected.")
+        }
     }
 }
 
@@ -139,27 +166,6 @@ extension BluetoothDeviceDetailsViewController: BluetoothDeviceHeaderCollectionV
     
     func connectReader() {
         connectReader(ble)
-        PersistentDataHelper.shared.readerPeripheral = ble.identifier.uuidString
-        PersistentDataHelper.shared.readerConnected = true
-        isConnected = true
-        bluetoothManager.mTerminals!.forEach {
-            if $0.name == (ble.name ?? "") {
-                do {
-                    let batteryLevel = try bluetoothManager.nfcManager.batteryLevel(terminal: $0, timeout: 10000)
-                    if batteryLevel < 0 {
-                        print("Battery Level: Not supported")
-                    } else {
-                        let batteryValueString = String(format: "%d%%", batteryLevel)
-                        NotificationCenter.default.post(name: .NfcBatteryStatus, object: nil, userInfo: ["battery": batteryValueString])
-                    }
-                } catch let error {
-                    print("Failed to get battery level:", error)
-                }
-            }
-        }
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView.reloadData()
-        }
     }
     
     func disconnectReader() {

@@ -16,7 +16,11 @@ class AuthRouter: BaseRouter, AuthRouterProtocol {
     static func createModule() -> UIViewController {
         let view =  AuthViewController()
 
-        let interactor = AuthInteractor()
+        let interactor = AuthInteractor(
+            authUseCase: AuthUseCase(
+                authReporsitory: AuthRepositoryImp()
+            )
+        )
         let router = AuthRouter()
         let presenter = AuthPresenter(view: view, interactor: interactor, router: router)
         view.presenter = presenter

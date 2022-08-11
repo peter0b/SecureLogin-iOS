@@ -21,9 +21,9 @@ class MainAppInteractor {
             UINavigationController(rootViewController: HomeRouter.createModule()),
             UINavigationController(rootViewController: ScanBadgeRouter.createModule())
         ]
-        mWindow.rootViewController = splitViewController
+        mWindow.rootViewController = splitViewController //AuthRouter.createModule()
 //        let homeVC = UINavigationController(rootViewController: HomeRouter.createModule())
-//        window.rootViewController = homeVC
+//        mWindow.rootViewController = homeVC
         mWindow.makeKeyAndVisible()
         return mWindow
     }

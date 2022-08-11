@@ -35,10 +35,12 @@ final class EditApplicationCredentialsViewController: BaseViewController {
     
     var card: Card
     var mifareDesfireHelper: MiFareDesfireHelper!
+    var sites: [SiteVM]
     
-    init(card: Card, mifareDesfireHelper: MiFareDesfireHelper) {
+    init(card: Card, mifareDesfireHelper: MiFareDesfireHelper, sites: [SiteVM]) {
         self.card = card
         self.mifareDesfireHelper = mifareDesfireHelper
+        self.sites = sites
         super.init()
     }
     
@@ -47,6 +49,7 @@ final class EditApplicationCredentialsViewController: BaseViewController {
         let cardChannel = bluetoothManager.getChardChannel()
         card = cardChannel!.card
         mifareDesfireHelper = MiFareDesfireHelper(card: card, mifareNFCCardManager: ApduCommandExecuter())
+        sites = []
         super.init(coder: coder)
     }
     
@@ -56,6 +59,7 @@ final class EditApplicationCredentialsViewController: BaseViewController {
         
         // Do any additional setup after loading the view.
         presenter.viewDidLoad()
+        readApplicationCredentials(sites: sites)
         presenter.performValidate(username: usernameTextField.text, password: passwordTextField.text)
     }
 }
@@ -63,6 +67,16 @@ final class EditApplicationCredentialsViewController: BaseViewController {
 // MARK: - Helpers
 extension EditApplicationCredentialsViewController {
     
+    func readApplicationCredentials(sites: [SiteVM]) {
+        mifareDesfireHelper.readSitesFromCard(cardChannel: card, sites: sites) { [unowned self] response, error in
+            if let error = error {
+                print("Failed to read site \(sites[0].code ?? ""):", error)
+                return
+            }
+            self.usernameTextField.text = sites[0].username
+            self.passwordTextField.text = sites[0].password
+        }
+    }
 }
 
 // MARK: - Selectors
@@ -80,6 +94,7 @@ extension EditApplicationCredentialsViewController {
     
     @IBAction
     private func saveButtonDidPressed(_ sender: UIButton) {
+        view.endEditing(true)
         presenter.performSave(username: usernameTextField.text, password: passwordTextField.text)
     }
 }

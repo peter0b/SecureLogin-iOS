@@ -31,12 +31,12 @@ extension BaseViewController: BaseViewProtocol {
     
     func showLoading() {
         view.subviews.forEach { $0.alpha = 0 }
-        startAnimating(.init(width: 60, height: 60), type: .lineSpinFadeLoader, color: DesignSystem.Colors.background5.color, backgroundColor: DesignSystem.Colors.backgroundTransparentColor.color, fadeInAnimation: nil)
+        keyWindow?.startBlockingActivityIndicator()
     }
     
     func hideLoading() {
         view.subviews.forEach { $0.alpha = 1 }
-        stopAnimating()
+        keyWindow?.stopBlockingActivityIndicator()
     }
     
     func showErrorAlert(error: String) {

@@ -26,6 +26,7 @@ protocol BaseRouterProtocol {
     func popoupToSplitRootViewViewController()
     func dismissViewController()
     func presentImagePickerViewController(completion: @escaping (UIImage) -> Void)
+    func presentAlertControl(title: String?, message: String?, actionTitle: String?, action: (() -> Void)?)
 }
 
 protocol BaseInteractorInputProtocol: AnyObject {

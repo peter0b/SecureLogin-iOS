@@ -10,7 +10,7 @@ import Alamofire
 
 enum APIRouter: APIConfiguration {
     
-    case login
+    case login(authRequest: AuthRequest)
     case getApplicationsList(params: GetApplicationsList)
     
     // MARK: - HTTPMethod
@@ -24,7 +24,7 @@ enum APIRouter: APIConfiguration {
     // MARK: - Path
     var path: String {
         switch self {
-        case .login: return "delegate/get_setting"
+        case .login: return "Account/login"
         case .getApplicationsList: return "AuthService/DoInvoke"
         }
     }
@@ -40,7 +40,7 @@ enum APIRouter: APIConfiguration {
     // MARK: - Parameters
     var parameters: Parameters? {
         switch self {
-        case .login: return nil
+        case .login(let authRequest): return try? authRequest.asDictionary()
         case .getApplicationsList(let params): return try? params.asDictionary()
         }
     }

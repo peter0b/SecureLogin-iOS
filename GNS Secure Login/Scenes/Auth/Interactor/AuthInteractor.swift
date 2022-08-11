@@ -14,6 +14,24 @@ import Foundation
 class AuthInteractor: AuthInteractorInputProtocol {
     
     weak var presenter: AuthInteractorOutputProtocol?
+    private let authUseCase: AuthUseCase
     
+    init(authUseCase: AuthUseCase) {
+        self.authUseCase = authUseCase
+    }
     
+    func loginUser(authRequest: AuthRequest) {
+        authUseCase.loginUser(authRequest: authRequest) { [unowned self] result in
+            switch result {
+            case .success(let userResponse):
+                DispatchQueue.main.async {
+                    self.presenter?.fetchingLoginSuccessfully(user: userResponse)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.presenter?.fetchingLoignWithError(error: error.rawValue.localized())
+                }
+            }
+        }
+    }
 }

@@ -30,7 +30,7 @@
 "are_you_sure" = "Are you sure you want to format badge?";
 "no" = "No";
 "yes" = "Yes";
-"format_success" = "Badge Formatted Successfully.";
+"format_success" = "Badge Formatted Successfully. \nRemove and add card again.";
 "format_fail" = "Couldn't format the badge. Please try again later.";
 
 // MARK: - SettingsViewController
@@ -42,6 +42,7 @@
 // MARK: - BluetoothDeviceDetailsViewController
 "action.fingerprintEnrollment" = "Fingerprint Enrollment";
 "action.formatBadge" = "Format Badge";
+"action.dfu" = "Update Badge Firmware";
 
 // MARK: - FingerprintEnrollmentViewController
 "fingerprint_enrollment_message" = "Enroll center of fingerprint, \nlift your finger and press a different part of it on the sensor";
@@ -56,3 +57,15 @@
 // MARK: - FingerprintVideoTutorialViewController
 "button.skip" = "Skip";
 "button.cancel" = "Cancel";
+
+// MARK: - DeviceFirmwareUpdateViewController
+"dfu" = "DFU";
+"application" = "Application";
+"select_file" = "SELECT FILE";
+"dfu_title" = "DEVICE FIRMWARE UPDATE";
+"file_name" = "File name";
+"size" = "Size";
+"status" = "Status";
+"file_not_loaded" = "File not loaded";
+"file_ok" = "Ok";
+"upload" = "UPLOAD";

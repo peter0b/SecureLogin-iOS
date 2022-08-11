@@ -28,16 +28,19 @@ protocol BluetoothDeviceDetailsPresenterProtocol: BasePresenterProtocol {
 
 
 protocol BluetoothDeviceDetailsRouterProtocol: BaseRouterProtocol {
-    func navigateToFingerprintEnrollmentViewController(withBluetoothDevice ble: CBPeripheral)
+    func presentEnrollmentAlertViewController(enrollAlertType: EnrollAlertType, badgeSerial: String?, completionAction: @escaping EnrollAlertCompletion)
+    func navigateToFingerprintEnrollmentViewController(withBluetoothDevice ble: CBPeripheral, enrollAlertType: EnrollAlertType, badgeSerial: String, firstEnrollment: Bool)
     func navigateToFormatBadgeViewController()
+    func navigateToUpdateBadgeViewController(dfuPeripheral: CBPeripheral)
 }
 
 protocol BluetoothDeviceDetailsInteractorInputProtocol: BaseInteractorInputProtocol {
     var presenter: BluetoothDeviceDetailsInteractorOutputProtocol? { get set }
-    
+    func getCheckEnrollmentCount(params: GetApplicationsList)
 }
 
 protocol BluetoothDeviceDetailsInteractorOutputProtocol: BaseInteractorOutputProtocol {
-    
-    
+    func fetchingCheckBadgeEnrollmentCountSuccessfully(_ count: Int)
+    func fetchingUpdateEnrollmentCountSuccessfully()
+    func fetchingCheckBadeEnrollmentCountWithError(_ error: String)
 }

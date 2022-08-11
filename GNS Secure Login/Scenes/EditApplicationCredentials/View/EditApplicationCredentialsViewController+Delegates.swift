@@ -25,14 +25,13 @@ extension EditApplicationCredentialsViewController: EditApplicationCredentialsVi
     }
     
     func writeApplicationCredentials(sites: [SiteVM]) {
-        mifareDesfireHelper.writeSitesToCard(card, sites: sites) { response, error in
+        mifareDesfireHelper.writeSitesToCard(card, sites: sites) { [unowned self] response, error in
             if let error = error {
                 print("Failed to read site \(sites[0].code ?? ""):", error)
                 return
             }
-//            dump(response)
-            print("username:", sites[0].username)
-            print("password:", sites[0].password!.dropLast(11).map { String($0) })
+            self.showBottomMessage("Credentials updated successfully!")
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

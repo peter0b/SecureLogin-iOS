@@ -17,6 +17,9 @@ class AuthPresenter: BasePresenter {
     private let interactor: AuthInteractorInputProtocol
     private let router: AuthRouterProtocol
     
+    private var mUsername: String?
+    private var mPassword: String?
+    
     init(view: AuthViewProtocol, interactor: AuthInteractorInputProtocol, router: AuthRouterProtocol) {
         self.view = view
         self.interactor = interactor
@@ -36,13 +39,39 @@ extension AuthPresenter: AuthPresenterProtocol {
 
 // MARK : - API
 extension AuthPresenter: AuthInteractorOutputProtocol {
+ 
+    func fetchingLoginSuccessfully(user: AuthResponse) {
+        view?.hideLoading()
+        
+//        let usernameCFString = (mUsername ?? "") as CFString
+//        let passwordCFString = (mPassword ?? "") as CFString
+//        SecAddSharedWebCredential(
+//            "las.s-badge.com" as CFString,
+//            usernameCFString,
+//            passwordCFString
+//        ) { error in
+//            if let error = error {
+//                print("❌Failed to save user to icloud keychain:", error)
+//                return
+//            }
+//            print("Saved user to icloud keychaing✅")
+//        }
+    }
     
+    func fetchingLoignWithError(error: String) {
+        view?.hideLoading()
+        view?.showBottomMessage(error)
+    }
 }
 
 // MARK : - Selectors
 extension AuthPresenter {
     
-    func performLogin() {
-        router.navigateToHome()
+    func performLogin(company: String?, username: String?, password: String?) {
+        mUsername = username
+        mPassword = password
+        view?.showLoading()
+        interactor.loginUser(authRequest: AuthRequest(username: username, password: password))
+//        router.navigateToHome()
     }
 }

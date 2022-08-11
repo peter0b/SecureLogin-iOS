@@ -95,6 +95,8 @@ PODS:
   - GoogleUtilities/UserDefaults (7.4.1):
     - GoogleUtilities/Logger
   - IDZSwiftCommonCrypto (0.13.0)
+  - iOSDFULibrary (4.11.0):
+    - ZIPFoundation (= 0.9.11)
   - IQKeyboardManagerSwift (6.5.6)
   - Kingfisher (6.3.0)
   - MarqueeLabel (4.0.5)
@@ -106,6 +108,11 @@ PODS:
   - NotificationBannerSwift (3.0.6):
     - MarqueeLabel (~> 4.0.5)
     - SnapKit (~> 5.0.1)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
+  - NVActivityIndicatorView/Extended (5.1.1):
+    - NVActivityIndicatorView/Base
   - PromisedFuture (1.0.2)
   - PromisesObjC (1.2.12)
   - SkeletonView (1.15.0)
@@ -113,6 +120,7 @@ PODS:
   - SwiftLint (0.43.1)
   - TransitionButton (0.5.3)
   - TTGSnackbar (1.10.5)
+  - ZIPFoundation (0.9.11)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
@@ -120,9 +128,12 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Crashlytics
   - IDZSwiftCommonCrypto
+  - iOSDFULibrary
   - IQKeyboardManagerSwift
   - Kingfisher
   - NotificationBannerSwift (~> 3.0.0)
+  - NVActivityIndicatorView
+  - NVActivityIndicatorView/Extended
   - PromisedFuture
   - SkeletonView
   - SwiftLint
@@ -143,11 +154,13 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - IDZSwiftCommonCrypto
+    - iOSDFULibrary
     - IQKeyboardManagerSwift
     - Kingfisher
     - MarqueeLabel
     - nanopb
     - NotificationBannerSwift
+    - NVActivityIndicatorView
     - PromisedFuture
     - PromisesObjC
     - SkeletonView
@@ -155,6 +168,7 @@ SPEC REPOS:
     - SwiftLint
     - TransitionButton
     - TTGSnackbar
+    - ZIPFoundation
 
 SPEC CHECKSUMS:
   Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
@@ -169,11 +183,13 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 11e3a5f2c190327df1a4a5d7e7ae3d4d5b9c9e4c
   GoogleUtilities: f8a43108b38a68eebe8b3540e1f4f2d28843ce20
   IDZSwiftCommonCrypto: 00dd37cdfbd149312a7e5a582cf9909f8b129f44
+  iOSDFULibrary: ca2a4da1f1680fe4957b0a33ad605c9e10f7ae7c
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   NotificationBannerSwift: 7021be2338f8f29cf424b0aca43da462bf9e2a1a
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PromisedFuture: 15ab3542f9d9c9d62886e2228c606a3e0fd16ccd
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SkeletonView: cac18a3ac4f893b09d99e65072d806ef08377aae
@@ -181,7 +197,8 @@ SPEC CHECKSUMS:
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   TTGSnackbar: 2bd245d2bbf83639483410273fd936af0b7ba2a9
+  ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: a8a35b00820d20e5b0db1554e6bccb180394e734
+PODFILE CHECKSUM: f989dba8af00df84ef4c92e3279516c0320aea36
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.3

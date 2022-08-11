@@ -77,7 +77,7 @@ extension ApplicationsListViewController {
                     return
                 }
                 print("Card UUID:", MifareUtils.toHexString(buffer: response!.responseData))
-                let cardUID = MifareUtils.toHexString(buffer: response!.responseData)
+                let cardUID = MifareUtils.toHexString(buffer: response!.responseData).removeWhitespace()
                 self?.presenter.getApplicationsList(withCardUID: cardUID)
             }
         }

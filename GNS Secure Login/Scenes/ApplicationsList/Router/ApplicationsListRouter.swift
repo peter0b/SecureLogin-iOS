@@ -62,8 +62,8 @@ class ApplicationsListRouter: BaseRouter, ApplicationsListRouterProtocol {
         viewController?.present(vc, animated: true)
     }
     
-    func navigateToEditApplicationCredentialsViewController(card: Card, mifareDesfireHelper: MiFareDesfireHelper, application: SitesInfo) {
-        let editApplicationCredentialsViewController = EditApplicationCredentialsRouter.createModule(card: card, mifareDesfireHelper: mifareDesfireHelper, application: application)
+    func navigateToEditApplicationCredentialsViewController(card: Card, mifareDesfireHelper: MiFareDesfireHelper, application: SitesInfo, sites: [SiteVM]) {
+        let editApplicationCredentialsViewController = EditApplicationCredentialsRouter.createModule(card: card, mifareDesfireHelper: mifareDesfireHelper, application: application, sites: sites)
         viewController?.navigationController?.pushViewController(editApplicationCredentialsViewController, animated: true)
     }
     

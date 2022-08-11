@@ -13,8 +13,15 @@ final class AuthViewController: BaseViewController {
     let password = "1234"
     
     // MARK: - Outlets
-    @IBOutlet private weak var usernameTextField: UITextField!
-    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var companyTextField: UITextField! {
+        didSet { companyTextField.text = "GNS" }
+    }
+    @IBOutlet private weak var usernameTextField: UITextField! {
+        didSet { usernameTextField.text = "Safwat" }
+    }
+    @IBOutlet private weak var passwordTextField: UITextField! {
+        didSet { passwordTextField.text = "123456" }
+    }
     @IBOutlet private weak var loginButtonPortraitBottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var loginButtonLandscapeBottomConstraint: NSLayoutConstraint!
     
@@ -50,20 +57,23 @@ extension AuthViewController {
     
     @IBAction
     private func loginButtonDidPressed(_ sender: UIButton) {
-        if usernameTextField.text == username && passwordTextField.text == password {
-            let usernameCFString = (usernameTextField.text ?? "") as CFString
-            let passwordCFString = (passwordTextField.text ?? "") as CFString
-            SecAddSharedWebCredential(
-                "las.s-badge.com" as CFString,
-                usernameCFString,
-                passwordCFString) { error in
-                if let error = error {
-                    print("Failed to save user to icloud keychain:", error)
-                    return
-                }
-                self.presenter.performLogin()
-            }
-        }
+        presenter.performLogin(company: companyTextField.text, username: usernameTextField.text, password: passwordTextField.text)
+        
+        
+//        if usernameTextField.text == username && passwordTextField.text == password {
+//            let usernameCFString = (usernameTextField.text ?? "") as CFString
+//            let passwordCFString = (passwordTextField.text ?? "") as CFString
+//            SecAddSharedWebCredential(
+//                "las.s-badge.com" as CFString,
+//                usernameCFString,
+//                passwordCFString) { error in
+//                if let error = error {
+//                    print("Failed to save user to icloud keychain:", error)
+//                    return
+//                }
+//                self.presenter.performLogin()
+//            }
+//        }
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {

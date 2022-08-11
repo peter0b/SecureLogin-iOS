@@ -14,6 +14,9 @@ target 'GNS Secure Login' do
   pod 'NotificationBannerSwift', '~> 3.0.0'
   pod 'Kingfisher'
   pod 'TransitionButton'
+  pod 'iOSDFULibrary'
+  pod 'NVActivityIndicatorView'
+  pod 'NVActivityIndicatorView/Extended'
   
   # Code Checks
   pod 'SwiftLint'

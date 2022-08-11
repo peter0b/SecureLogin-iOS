@@ -71,6 +71,7 @@ extension FingerprintEnrollmentViewController {
             case 4: self?.updateUI(withImage: DesignSystem.Icon.fingerprint1.image, status: "second_finger.second_time".localized())
             case 5: self?.updateUI(withImage: DesignSystem.Icon.fingerprint2.image, status: "second_finger.third_time".localized())
             case 6:
+                self?.presenter.didFinishFingerEnrollmentProcess()
                 self?.updateUI(withImage: DesignSystem.Icon.fingerprint3.image, status: "enrollment_done_successfully".localized())
                 self?.showBottomMessage("enrollment_done_successfully".localized())
                 self?.presenter.performBack()

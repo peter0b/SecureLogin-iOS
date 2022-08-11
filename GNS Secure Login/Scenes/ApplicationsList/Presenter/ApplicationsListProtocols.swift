@@ -45,7 +45,7 @@ protocol ApplicationsListPresenterProtocol: BasePresenterProtocol {
 
 protocol ApplicationsListRouterProtocol: BaseRouterProtocol {
     func openURL(withUrl urlString: String, javascript: String)
-    func navigateToEditApplicationCredentialsViewController(card: Card, mifareDesfireHelper: MiFareDesfireHelper, application: SitesInfo)
+    func navigateToEditApplicationCredentialsViewController(card: Card, mifareDesfireHelper: MiFareDesfireHelper, application: SitesInfo, sites: [SiteVM])
 }
 
 protocol ApplicationsListInteractorInputProtocol: BaseInteractorInputProtocol {

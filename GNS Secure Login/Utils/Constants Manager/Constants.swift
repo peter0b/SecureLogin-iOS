@@ -47,7 +47,8 @@ enum DateFormates: String {
 
 // MARK: - Global Constants
 enum GlobalConstants: String {
-    case success = "success"
+    case kSuccess = "success"
+    case gnsLicense = "1PJYSP5-1VEF1E0-6Z4HVC-1VE83VG"
 }
 
 //let manager = BluetoothSmartCard.shared.manager
@@ -55,8 +56,11 @@ enum GlobalConstants: String {
 //let cardStateMonitor = CardStateMonitor.shared
 //let bluetoothManager = CBCentralManager(delegate: nil, queue: nil)
 
+typealias EnrollAlertCompletion = (EnrollAlertType) -> Void
+
 // MARK: - NotificationCenter.Name
 extension Notification.Name {
+    static let BadgeIdValue = Notification.Name("badgeIdValue")
     static let BadgeBatteryStatus = Notification.Name("badgeBatteryStatus")
     static let EnrollmentValue = Notification.Name("enrollmentValue")
     static let NfcBatteryStatus = Notification.Name("nfcBatteryStatus")
@@ -71,7 +75,11 @@ let ENROLL_FEEDBACK_CHARACTERISTIC_UID = "Enroll Feedback characteristic UUID"
 // MARK: -
 var keyWindow: UIWindow? {
     if #available(iOS 13.0, *) {
-        return UIApplication.shared.windows.first
+        return UIApplication
+            .shared
+            .connectedScenes
+            .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+            .first { $0.isKeyWindow }
     } else {
         return UIApplication.shared.keyWindow
     }

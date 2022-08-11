@@ -9,6 +9,30 @@ import Foundation
 
 extension Data {
 
+    /// Returns the Data as hexadecimal string.
+    var hexString: String {
+        var array: [UInt8] = []
+        
+        #if swift(>=5.0)
+        withUnsafeBytes { array.append(contentsOf: $0) }
+        #else
+        withUnsafeBytes { array.append(contentsOf: getByteArray($0)) }
+        #endif
+        
+        return array.reduce("") { (result, byte) -> String in
+            result + String(format: "%02x", byte)
+        }
+    }
+
+    private func getByteArray(_ pointer: UnsafePointer<UInt8>) -> [UInt8] {
+        let buffer = UnsafeBufferPointer<UInt8>(start: pointer, count: count)
+        return [UInt8](buffer)
+    }
+    
+}
+
+extension Data {
+
     // From http://stackoverflow.com/a/40278391:
     init?(fromHexEncodedString string: String) {
 

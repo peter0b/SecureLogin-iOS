@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="GNS_Secure_Login" customModuleProvider="target">
             <connections>
+                <outlet property="companyTextField" destination="A05-W0-IVX" id="ibR-d3-uUE"/>
                 <outlet property="loginButtonLandscapeBottomConstraint" destination="dWt-Kj-0oF" id="FTN-Qf-Sv1"/>
                 <outlet property="loginButtonPortraitBottomConstraint" destination="Sqk-rP-yHd" id="7rP-yb-hna"/>
                 <outlet property="passwordTextField" destination="sLW-Qy-2jz" id="ivB-SK-DDd"/>

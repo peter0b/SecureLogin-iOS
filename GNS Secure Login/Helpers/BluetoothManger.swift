@@ -26,6 +26,11 @@ class BluetoothManager: NSObject {
     private  var manager: BluetoothTerminalManager
     private var factory: TerminalFactory
     private var cardStateMonitor: CardStateMonitor
+    private var readerScanResults = [CBPeripheral]()
+    private var readerScansRSSI = [NSNumber]()
+    
+    private var cardScanResults = [CBPeripheral]()
+    private var cardScansRSSI: [NSNumber] = []
     
     var nfcManager: BluetoothTerminalManager {
         return manager
@@ -33,7 +38,8 @@ class BluetoothManager: NSObject {
     
     var cardTerminal: CardTerminal? = nil
     var bluetoothManager: CBCentralManager
-    var mTerminals: Array<CardTerminal>? = []
+    private(set) var isPeripheralConnected = false
+    var mTerminals: [CardTerminal]? = []
 //    var cardTerminal: CardTerminal? = nil
     
     private(set) static var cardConnected = false
@@ -147,10 +153,6 @@ class BluetoothManager: NSObject {
         bluetoothManager.connect(perhipheral, options: nil)
     }
     
-//    func checkCardIsConnected() -> Bool {
-//        return manager.centralManager.state == .
-//    }
-    
     func getServices(forPeripheral peripheral: CBPeripheral) {
         print("\(String(describing: peripheral.name)) services count: \(String(describing: peripheral.services?.count))")
     }
@@ -249,12 +251,6 @@ class BluetoothManager: NSObject {
         }
     }
     
-    private var readerScanResults = [CBPeripheral]()
-    private var readerScansRSSI = [NSNumber]()
-    
-    private var cardScanResults = [CBPeripheral]()
-    private var cardScansRSSI: [NSNumber] = []
-    
     /// Scan bluetooth devices.
     func startScanForBLEDevices() {
         //manager?.scanForPeripherals(withServices: [CBUUID.init(string: parentView!.BLEService)], options: nil)
@@ -277,7 +273,7 @@ class BluetoothManager: NSObject {
 extension BluetoothManager: BluetoothTerminalManagerDelegate {
     
     func bluetoothTerminalManagerDidUpdateState(_ manager: BluetoothTerminalManager) {
-        print(manager.centralManager.state.rawValue)
+        print("manager.centralManager.state.rawValue:", manager.centralManager.state.rawValue)
         switch manager.centralManager.state {
         case .unknown:
             print("unknown")
@@ -328,10 +324,9 @@ extension BluetoothManager: CBCentralManagerDelegate {
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) { print("central updated:", central) }
     
+    /// This function is used to display newarby BLE Devices which are not connected yet.
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if peripheral.name != nil {
-//            print("per:", peripheral.name!)
-        }
+//        print(peripheral)
         let readerIndexQuery = readerScanResults.firstIndex(of: peripheral)
         if readerIndexQuery != nil && readerIndexQuery != -1 { // A scan result already exists with the same address
             if RSSI.intValue >= -85 {
@@ -385,9 +380,20 @@ extension BluetoothManager: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        if (peripheral.name ?? "").lowercased().contains("STAR".lowercased()) {
+        if (peripheral.name ?? "").lowercased().contains("STAR".lowercased()) || (peripheral.name ?? "").lowercased().contains("ACR1255U".lowercased()) {
+            peripheral.discoverServices(nil)
+            peripheral.delegate = self
             print("*******************************************************")
             print("\(peripheral.name ?? "") with identifier: \(peripheral.identifier) CONNECTED!!!!")
+            isPeripheralConnected = true
+        }
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        if (peripheral.name ?? "").lowercased().contains("STAR".lowercased()) {
+            print("*******************************************************")
+            print("\(peripheral.name ?? "") with identifier: \(peripheral.identifier) DISCONNECTED!!!!")
+            isPeripheralConnected = false
         }
     }
 }
@@ -395,72 +401,12 @@ extension BluetoothManager: CBCentralManagerDelegate {
 // MARK: - CBPeripheralDelegate
 extension BluetoothManager: CBPeripheralDelegate {
     
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        print("*******************************************************")
-        guard let services = peripheral.services else {
-            print("No Services found!!!")
-            return
+    func titleForUUID(_ uuid:CBUUID) -> String {
+        var title = uuid.description
+        if (title.hasPrefix("Unknown")) {
+            title = uuid.uuidString
         }
-        print("Found \(services.count) Services.")
-        for service in services {
-            print("Service UUID:", service.uuid)
-            peripheral.discoverCharacteristics(nil, for: service)
-        }
-    }
-    
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        print("*******************************************************")
-        guard let characteristics = service.characteristics else {
-            print("Characteristics not Found!!!")
-            return
-        }
-        
-        print("Service in \(#function):", service.uuid.uuidString)
-        print("Found \(characteristics.count) characteristics.")
-        
-        if SampleGattAttributes.BLE_BATTERY_SERVICE_UUID.uuidString.contains(service.uuid.uuidString) {
-            // Battery Service
-            
-            print("Found Battery Services: \(characteristics.count) characteristics.")
-            for characteristic in characteristics {
-                if characteristic.uuid.isEqual(SampleGattAttributes.BLE_BATTERY_LEVEL_UUID)  {
-                    SampleGattAttributes.batteryCharacteristic = characteristic
-                    peripheral.readValue(for: characteristic)
-                }
-            }
-        } else if SampleGattAttributes.BLE_GENERAL_SERVICE_UUID.uuidString.contains(service.uuid.uuidString) {
-            // Fingerprint Enrollment
-            print("Found Fingerprint Services: \(characteristics.count) characteristics.")
-            
-            var enrollCharacteristicUid = ""
-            var enrollFeedbackCharacteristicUid = ""
-            
-            gattCharacteristicGroupData(characteristics: characteristics).forEach {
-                if $0[LIST_NAME] == ENROLL_CHARACTERISTIC_UID {
-                    enrollCharacteristicUid = $0[LIST_UUID] ?? ""
-                }
-                if $0[LIST_NAME] == ENROLL_FEEDBACK_CHARACTERISTIC_UID {
-                    enrollFeedbackCharacteristicUid = $0[LIST_UUID] ?? ""
-                }
-            }
-            
-            let character = characteristics.filter { $0.uuid.uuidString == enrollCharacteristicUid || $0.uuid.uuidString.contains(enrollCharacteristicUid) }.first
-            let feedbackCharacter = characteristics.filter { $0.uuid.uuidString == enrollFeedbackCharacteristicUid || $0.uuid.uuidString.contains(enrollFeedbackCharacteristicUid) }.first
-            
-            let enrollCommand: UInt8 = 0x57
-            
-            print("feedbackCharacter", feedbackCharacter)
-            peripheral.setNotifyValue(true, for: feedbackCharacter!)
-
-            let enrollmentCommandData = Data([enrollCommand])
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                peripheral.writeValue(enrollmentCommandData, for: character!, type: .withResponse)
-//            }
-        }
-    }
-    
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverDescriptorsFor characteristic: CBCharacteristic, error: Error?) {
-        print("descriptords:", characteristic.descriptors)
+        return title
     }
     
     private func gattCharacteristicGroupData(characteristics: [CBCharacteristic]) -> [[String: String]] {
@@ -478,9 +424,96 @@ extension BluetoothManager: CBPeripheralDelegate {
         return gattCharacteristicGroupData
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         print("*******************************************************")
-        if SampleGattAttributes.BLE_BATTERY_LEVEL_UUID.isEqual(characteristic.uuid) {
+        guard let services = peripheral.services else {
+            print("No Services found!!!")
+            return
+        }
+        print("Found \(services.count) Services.")
+        services.forEach { service in
+            if titleForUUID(service.uuid).lowercased().contains(SampleGattAttributes.BLE_GENERAL_SERVICE_UUID.uuidString.lowercased()) {
+                peripheral.discoverCharacteristics(nil, for: service)
+            } else if titleForUUID(service.uuid).lowercased().contains("battery") {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    peripheral.discoverCharacteristics(nil, for: service)
+                }
+            }
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        if let error = error {
+            print("Failed to discover characteristics:", error)
+            return
+        }
+        print("*******************************************************")
+        guard let characteristics = service.characteristics else {
+            print("Characteristics not Found!!!")
+            return
+        }
+        
+        print("Service in \(#function):", service.uuid.uuidString)
+        print("Found \(characteristics.count) characteristics.")
+        
+        if SampleGattAttributes.BLE_GENERAL_SERVICE_UUID.uuidString.contains(service.uuid.uuidString) {
+            // Fingerprint Enrollment
+            print("Found Fingerprint Services: \(characteristics.count) characteristics.")
+            
+            var enrollCharacteristicUid = ""
+            var enrollFeedbackCharacteristicUid = ""
+            gattCharacteristicGroupData(characteristics: characteristics).forEach {
+                if $0[LIST_NAME] == ENROLL_CHARACTERISTIC_UID {
+                    enrollCharacteristicUid = $0[LIST_UUID] ?? ""
+                }
+                if $0[LIST_NAME] == ENROLL_FEEDBACK_CHARACTERISTIC_UID {
+                    enrollFeedbackCharacteristicUid = $0[LIST_UUID] ?? ""
+                }
+            }
+            
+            let character = characteristics.filter { $0.uuid.uuidString == enrollCharacteristicUid || $0.uuid.uuidString.contains(enrollCharacteristicUid) }.first
+            let feedbackCharacter = characteristics.filter { $0.uuid.uuidString == enrollFeedbackCharacteristicUid || $0.uuid.uuidString.contains(enrollFeedbackCharacteristicUid) }.first
+
+            let enrollCommand: UInt8 = 0x57
+            peripheral.setNotifyValue(true, for: feedbackCharacter!)
+
+            let enrollmentCommandData = Data([enrollCommand])
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                peripheral.writeValue(enrollmentCommandData, for: character!, type: .withResponse)
+            }
+            characteristics.forEach {
+                if $0.uuid.isEqual(SampleGattAttributes.BLE_BAGE_ID_UUID) {
+                    SampleGattAttributes.batteryCharacteristic = $0
+                    peripheral.readValue(for: $0)
+                }
+            }
+        } else if SampleGattAttributes.BLE_BATTERY_SERVICE_UUID.uuidString.contains(service.uuid.uuidString) {
+            // Battery Service
+            print("Found Battery Services: \(characteristics.count) characteristics.")
+            characteristics.forEach {
+                if $0.uuid.isEqual(SampleGattAttributes.BLE_BATTERY_LEVEL_UUID) {
+//                    device.read(characteristic: $0)
+                    peripheral.readValue(for: $0)
+                }
+            }
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverDescriptorsFor characteristic: CBCharacteristic, error: Error?) {
+//        print("descriptords:", characteristic.descriptors)
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        if let error = error {
+            print("Failed to update value for characteristics:", error)
+            return
+        }
+        print("*******************************************************")
+        if SampleGattAttributes.BLE_BAGE_ID_UUID.isEqual(characteristic.uuid) {
+            if let value = characteristic.value {
+                NotificationCenter.default.post(name: .BadgeIdValue, object: nil, userInfo: ["badgeId": value.hexString])
+            }
+        } else if SampleGattAttributes.BLE_BATTERY_LEVEL_UUID.isEqual(characteristic.uuid) {
             guard SampleGattAttributes.batteryCharacteristic != nil else {
                 print("No Charecteristics Found")
                 return
@@ -492,7 +525,7 @@ extension BluetoothManager: CBPeripheralDelegate {
             let enrolmmentValue = characteristic.value?.first ?? 0
             let enrollmentValueInt = Int(enrolmmentValue)
             NotificationCenter.default.post(name: .EnrollmentValue, object: nil, userInfo: ["enrollmentValue": enrollmentValueInt])
-            }
+        }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {

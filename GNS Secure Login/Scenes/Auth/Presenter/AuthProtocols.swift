@@ -21,7 +21,7 @@ protocol AuthPresenterProtocol: BasePresenterProtocol {
     
     func viewDidLoad()
 
-    func performLogin()
+    func performLogin(company: String?, username: String?, password: String?)
 }
 
 protocol AuthRouterProtocol: BaseRouterProtocol {
@@ -30,10 +30,10 @@ protocol AuthRouterProtocol: BaseRouterProtocol {
 
 protocol AuthInteractorInputProtocol: BaseInteractorInputProtocol {
     var presenter: AuthInteractorOutputProtocol? { get set }
-    
+    func loginUser(authRequest: AuthRequest)
 }
 
 protocol AuthInteractorOutputProtocol: BaseInteractorOutputProtocol {
-    
-    
+    func fetchingLoginSuccessfully(user: AuthResponse)
+    func fetchingLoignWithError(error: String)
 }

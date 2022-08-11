@@ -23,4 +23,10 @@ enum AuthCommandType: Int {
     case UpdateUserRole = 13
     case ActivateCard = 14
     case LoadingUserGNSSites = 15
+    case ValidateBadgeOTP = 16
+    case checkEnrollmentCount = 18
+    case changeEnrollmentCount = 19
+    case AddToUserPIN = 20
+    case ValidateUserPIN = 21
+    case GetUserInformationByBadeSerial = 23
 }

@@ -1,0 +1,14 @@
+//
+//  DeviceFirmwareUpdateViewController+Delegates.swift
+//  GNS Secure Login
+//
+//  Created by Peter Bassem on 30/12/2021.
+//  Copyright © 2021 ___ORGANIZATIONNAME___. All rights reserved.
+//
+//
+
+import UIKit
+
+extension DeviceFirmwareUpdateViewController: DeviceFirmwareUpdateViewProtocol {
+    
+}
