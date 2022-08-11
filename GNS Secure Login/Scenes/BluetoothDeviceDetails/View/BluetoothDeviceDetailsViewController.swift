@@ -184,5 +184,6 @@ extension BluetoothDeviceDetailsViewController: BluetoothDeviceHeaderCollectionV
     
     func disconnectBadge() {
         bluetoothManager.disconnect(fromBadge: ble)
+        NotificationCenter.default.post(name: .BadgeBatteryStatus, object: nil, userInfo: ["battery": -1])
     }
 }

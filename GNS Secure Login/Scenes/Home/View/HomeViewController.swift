@@ -112,11 +112,15 @@ final class HomeViewController: BaseViewController {
         
         NotificationCenter.default.addObserver(forName: .BadgeBatteryStatus, object: nil, queue: .main) { [weak self] notification in
             let dict = notification.userInfo
-            let batteryLevel = dict?["battery"] as? String ?? ""
-            print("Badge Battery Level in home:", batteryLevel)
-            
-            self?.batteryLevelView.badgeBatteryView.isHidden = false
-            self?.batteryLevelView.badgeBatteryLabel.text = batteryLevel
+            if let batteryLevel = dict?["battery"] as? Int, batteryLevel == -1 {
+                self?.batteryLevelView.badgeBatteryView.isHidden = true
+                self?.batteryLevelView.badgeBatteryLabel.text = ""
+            } else if let batteryLevel = dict?["battery"] as? String {
+                print("Badge Battery Level in home:", batteryLevel)
+                
+                self?.batteryLevelView.badgeBatteryView.isHidden = false
+                self?.batteryLevelView.badgeBatteryLabel.text = batteryLevel
+            }
         }
         
         NotificationCenter.default.addObserver(forName: .NfcBatteryStatus, object: nil, queue: .main) { [weak self] notification in

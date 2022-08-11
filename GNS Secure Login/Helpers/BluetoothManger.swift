@@ -56,6 +56,9 @@ class BluetoothManager: NSObject {
     private let LIST_NAME = "NAME"
     private let LIST_UUID = "UUID"
     
+    static var startEnrollment = false
+    
+    
     func getAvailableReaders(completion: @escaping (([CBPeripheral]) -> Void)) {
         self.readers = completion
     }
@@ -151,6 +154,8 @@ class BluetoothManager: NSObject {
     
     func connect(toPeripheral perhipheral: CBPeripheral) {
         bluetoothManager.connect(perhipheral, options: nil)
+        perhipheral.discoverServices([SampleGattAttributes.BLE_BATTERY_SERVICE_UUID])
+        perhipheral.delegate = self
     }
     
     func getServices(forPeripheral peripheral: CBPeripheral) {
@@ -381,6 +386,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         if (peripheral.name ?? "").lowercased().contains("STAR".lowercased()) || (peripheral.name ?? "").lowercased().contains("ACR1255U".lowercased()) {
+//            peripheral.discoverServices([SampleGattAttributes.BLE_BAGE_ID_UUID, SampleGattAttributes.BLE_BATTERY_SERVICE_UUID])
             peripheral.discoverServices(nil)
             peripheral.delegate = self
             print("*******************************************************")
@@ -457,34 +463,36 @@ extension BluetoothManager: CBPeripheralDelegate {
         print("Found \(characteristics.count) characteristics.")
         
         if SampleGattAttributes.BLE_GENERAL_SERVICE_UUID.uuidString.contains(service.uuid.uuidString) {
-            // Fingerprint Enrollment
-            print("Found Fingerprint Services: \(characteristics.count) characteristics.")
-            
-            var enrollCharacteristicUid = ""
-            var enrollFeedbackCharacteristicUid = ""
-            gattCharacteristicGroupData(characteristics: characteristics).forEach {
-                if $0[LIST_NAME] == ENROLL_CHARACTERISTIC_UID {
-                    enrollCharacteristicUid = $0[LIST_UUID] ?? ""
-                }
-                if $0[LIST_NAME] == ENROLL_FEEDBACK_CHARACTERISTIC_UID {
-                    enrollFeedbackCharacteristicUid = $0[LIST_UUID] ?? ""
-                }
-            }
-            
-            let character = characteristics.filter { $0.uuid.uuidString == enrollCharacteristicUid || $0.uuid.uuidString.contains(enrollCharacteristicUid) }.first
-            let feedbackCharacter = characteristics.filter { $0.uuid.uuidString == enrollFeedbackCharacteristicUid || $0.uuid.uuidString.contains(enrollFeedbackCharacteristicUid) }.first
-
-            let enrollCommand: UInt8 = 0x57
-            peripheral.setNotifyValue(true, for: feedbackCharacter!)
-
-            let enrollmentCommandData = Data([enrollCommand])
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                peripheral.writeValue(enrollmentCommandData, for: character!, type: .withResponse)
-            }
             characteristics.forEach {
                 if $0.uuid.isEqual(SampleGattAttributes.BLE_BAGE_ID_UUID) {
                     SampleGattAttributes.batteryCharacteristic = $0
                     peripheral.readValue(for: $0)
+                }
+            }
+            if BluetoothManager.startEnrollment {
+                // Fingerprint Enrollment
+                print("Found Fingerprint Services: \(characteristics.count) characteristics.")
+                
+                var enrollCharacteristicUid = ""
+                var enrollFeedbackCharacteristicUid = ""
+                gattCharacteristicGroupData(characteristics: characteristics).forEach {
+                    if $0[LIST_NAME] == ENROLL_CHARACTERISTIC_UID {
+                        enrollCharacteristicUid = $0[LIST_UUID] ?? ""
+                    }
+                    if $0[LIST_NAME] == ENROLL_FEEDBACK_CHARACTERISTIC_UID {
+                        enrollFeedbackCharacteristicUid = $0[LIST_UUID] ?? ""
+                    }
+                }
+                
+                let character = characteristics.filter { $0.uuid.uuidString == enrollCharacteristicUid || $0.uuid.uuidString.contains(enrollCharacteristicUid) }.first
+                let feedbackCharacter = characteristics.filter { $0.uuid.uuidString == enrollFeedbackCharacteristicUid || $0.uuid.uuidString.contains(enrollFeedbackCharacteristicUid) }.first
+                
+                let enrollCommand: UInt8 = 0x57
+                peripheral.setNotifyValue(true, for: feedbackCharacter!)
+                
+                let enrollmentCommandData = Data([enrollCommand])
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    peripheral.writeValue(enrollmentCommandData, for: character!, type: .withResponse)
                 }
             }
         } else if SampleGattAttributes.BLE_BATTERY_SERVICE_UUID.uuidString.contains(service.uuid.uuidString) {
@@ -514,10 +522,10 @@ extension BluetoothManager: CBPeripheralDelegate {
                 NotificationCenter.default.post(name: .BadgeIdValue, object: nil, userInfo: ["badgeId": value.hexString])
             }
         } else if SampleGattAttributes.BLE_BATTERY_LEVEL_UUID.isEqual(characteristic.uuid) {
-            guard SampleGattAttributes.batteryCharacteristic != nil else {
-                print("No Charecteristics Found")
-                return
-            }
+//            guard SampleGattAttributes.batteryCharacteristic != nil else {
+//                print("No Charecteristics Found")
+//                return
+//            }
             let batteryValue = characteristic.value?.first ?? 0
             let batteryValueString = String(format: "%d%%", batteryValue)
             NotificationCenter.default.post(name: .BadgeBatteryStatus, object: nil, userInfo: ["battery": batteryValueString])

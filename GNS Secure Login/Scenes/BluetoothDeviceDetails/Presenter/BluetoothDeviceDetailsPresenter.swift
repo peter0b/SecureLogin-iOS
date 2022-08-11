@@ -52,6 +52,7 @@ extension BluetoothDeviceDetailsPresenter: BluetoothDeviceDetailsInteractorOutpu
         view?.hideLoading()
         router.presentEnrollmentAlertViewController(enrollAlertType: count == 0 ? .validateOTP : .validatPIN, badgeSerial: badgeSerial) { [unowned self] enrollAlertType in
             self.enrollAlertType = enrollAlertType
+            BluetoothManager.startEnrollment = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.router.navigateToFingerprintEnrollmentViewController(withBluetoothDevice: self.ble, enrollAlertType: self.enrollAlertType, badgeSerial: self.badgeSerial ?? "", firstEnrollment: self.firstEnrollment)
             }

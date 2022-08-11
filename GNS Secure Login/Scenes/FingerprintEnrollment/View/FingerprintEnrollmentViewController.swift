@@ -55,6 +55,7 @@ extension FingerprintEnrollmentViewController {
     
     private func observeVideoTutorialViewControllerCancelButton() {
         NotificationCenter.default.addObserver(forName: .VideTutorialCancelButton, object: nil, queue: .main) { [weak self] _ in
+            BluetoothManager.startEnrollment = false
             self?.presenter.performBack()
         }
     }
@@ -71,6 +72,7 @@ extension FingerprintEnrollmentViewController {
             case 4: self?.updateUI(withImage: DesignSystem.Icon.fingerprint1.image, status: "second_finger.second_time".localized())
             case 5: self?.updateUI(withImage: DesignSystem.Icon.fingerprint2.image, status: "second_finger.third_time".localized())
             case 6:
+                BluetoothManager.startEnrollment = false
                 self?.presenter.didFinishFingerEnrollmentProcess()
                 self?.updateUI(withImage: DesignSystem.Icon.fingerprint3.image, status: "enrollment_done_successfully".localized())
                 self?.showBottomMessage("enrollment_done_successfully".localized())
