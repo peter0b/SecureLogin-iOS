@@ -9,4 +9,5 @@ import Foundation
 
 enum ReaderActions: String, CaseIterable {
     case formatBadge = "action.formatBadge"
+    case readBadgeIds = "action.readBadgeIds"
 }

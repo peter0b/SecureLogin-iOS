@@ -42,6 +42,8 @@ extension AuthPresenter: AuthInteractorOutputProtocol {
  
     func fetchingLoginSuccessfully(user: AuthResponse) {
         view?.hideLoading()
+        PersistentDataHelper.shared.token = user.token
+        router.navigateToHome()
         
 //        let usernameCFString = (mUsername ?? "") as CFString
 //        let passwordCFString = (mPassword ?? "") as CFString

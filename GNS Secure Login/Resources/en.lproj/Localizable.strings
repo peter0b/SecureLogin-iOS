@@ -42,6 +42,7 @@
 // MARK: - BluetoothDeviceDetailsViewController
 "action.fingerprintEnrollment" = "Fingerprint Enrollment";
 "action.formatBadge" = "Format Badge";
+"action.readBadgeIds" = "Read Badge IDs";
 "action.dfu" = "Update Badge Firmware";
 
 // MARK: - FingerprintEnrollmentViewController

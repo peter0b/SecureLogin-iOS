@@ -13,15 +13,18 @@ final class AuthViewController: BaseViewController {
     let password = "1234"
     
     // MARK: - Outlets
-    @IBOutlet private weak var companyTextField: UITextField! {
-        didSet { companyTextField.text = "GNS" }
-    }
-    @IBOutlet private weak var usernameTextField: UITextField! {
-        didSet { usernameTextField.text = "Safwat" }
-    }
-    @IBOutlet private weak var passwordTextField: UITextField! {
-        didSet { passwordTextField.text = "123456" }
-    }
+    @IBOutlet private weak var companyTextField: UITextField!
+//    {
+//        didSet { companyTextField.text = "GNS" }
+//    }
+    @IBOutlet private weak var usernameTextField: UITextField!
+//    {
+//        didSet { usernameTextField.text = "Safwat" }
+//    }
+    @IBOutlet private weak var passwordTextField: UITextField!
+//    {
+//        didSet { passwordTextField.text = "123456" }
+//    }
     @IBOutlet private weak var loginButtonPortraitBottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var loginButtonLandscapeBottomConstraint: NSLayoutConstraint!
     

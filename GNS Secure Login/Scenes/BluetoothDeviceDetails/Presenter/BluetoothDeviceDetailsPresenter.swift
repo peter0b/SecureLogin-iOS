@@ -31,15 +31,23 @@ class BluetoothDeviceDetailsPresenter: BasePresenter {
         self.ble = ble
         self.bluetoothType = bluetoothType
     }
+    
+    func titleForUUID(_ uuid:CBUUID) -> String {
+        var title = uuid.description
+        if (title.hasPrefix("Unknown")) {
+            title = uuid.uuidString
+        }
+        return title
+    }
 }
 
 // MARK: - BluetoothDeviceDetailsPresenterProtocol
 extension BluetoothDeviceDetailsPresenter: BluetoothDeviceDetailsPresenterProtocol {
     
     func viewDidLoad() {
-        NotificationCenter.default.addObserver(forName: .BadgeIdValue, object: nil, queue: .main) { [unowned self] notification in
+        NotificationCenter.default.addObserver(forName: .BadgeIdValue, object: nil, queue: .main) { [weak self] notification in
             let badgeId = notification.userInfo?["badgeId"] as? String
-            self.badgeSerial = badgeId
+            self?.badgeSerial = badgeId
         }
     }
 }
@@ -94,8 +102,79 @@ extension BluetoothDeviceDetailsPresenter {
 //                router.navigateToFingerprintEnrollmentViewController(withBluetoothDevice: ble)
             case .formatBadge: router.navigateToFormatBadgeViewController()
             case .updateBadge: router.navigateToUpdateBadgeViewController(dfuPeripheral: ble)
+            case .readBadgeIds:
+                ble.discoverServices([SampleGattAttributes.BLE_GENERAL_SERVICE_UUID])
+                ble.delegate = self
             }
-        case .readers: router.navigateToFormatBadgeViewController()
+        case .readers:
+            switch ReaderActions.allCases[index] {
+            case .formatBadge:
+                router.navigateToFormatBadgeViewController()
+            case .readBadgeIds:
+                let bluetoothManager = BluetoothManager.getInstance()
+                let cardChannel = bluetoothManager.getChardChannel()
+                if cardChannel != nil {
+                    print("Trying to read badge ids...")
+                    
+                    let mifareDesfireHelper = MiFareDesfireHelper(card: cardChannel!.card, mifareNFCCardManager: ApduCommandExecuter())
+                    mifareDesfireHelper.getUid { [weak self] response, error in
+                        if let error = error {
+                            print("Failed to get badge NFC ID", error)
+                            return
+                        }
+                        let nfcCardUID = MifareUtils.toHexString(buffer: response!.responseData).removeWhitespace()
+                        print("nfcCardUID:", nfcCardUID)
+                        self?.router.naviagateToBadgeIdentifiersViewController(withIdentifier: "NFC ID: \(nfcCardUID)")
+                    }
+                } else {
+                    view?.showBottomMessage("Please insert card to format.")
+                }
+            }
         }
+    }
+}
+
+extension BluetoothDeviceDetailsPresenter: CBPeripheralDelegate {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        if let error = error {
+            print("Failed to discover services:", error)
+            return
+        }
+        let services = peripheral.services ?? []
+        services.forEach { service in
+            if titleForUUID(service.uuid).lowercased().contains(SampleGattAttributes.BLE_GENERAL_SERVICE_UUID.uuidString.lowercased()) {
+                peripheral.discoverCharacteristics(nil, for: service)
+            }
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        if SampleGattAttributes.BLE_GENERAL_SERVICE_UUID.uuidString.contains(service.uuid.uuidString) {
+            let characteristics = service.characteristics ?? []
+            characteristics.forEach {
+                if $0.uuid.isEqual(SampleGattAttributes.BLE_BAGE_ID_UUID) {
+                    peripheral.readValue(for: $0)
+                }
+            }
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        if SampleGattAttributes.BLE_BAGE_ID_UUID.isEqual(characteristic.uuid) {
+            if let value = characteristic.value {
+                    let badgeId = value.hexString //"215950110018246"
+                    // TODO: add ids viewcontroller
+                    
+                router.naviagateToBadgeIdentifiersViewController(withIdentifier: "BLE-ID: \(badgeId)")
+            }
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+        
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+        
     }
 }

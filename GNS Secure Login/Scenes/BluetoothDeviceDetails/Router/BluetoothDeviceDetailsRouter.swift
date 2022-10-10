@@ -53,4 +53,9 @@ class BluetoothDeviceDetailsRouter: BaseRouter, BluetoothDeviceDetailsRouterProt
         let updateBadgeViewController = DeviceFirmwareUpdateRouter.createModule(dfuPeripheral: dfuPeripheral)
         viewController?.navigationController?.pushViewController(updateBadgeViewController, animated: true)
     }
+    
+    func naviagateToBadgeIdentifiersViewController(withIdentifier identifier: String) {
+        let badgeIdentifiersViewController = BadgeIdentifiersRouter.createModule(badgeIdentifier: identifier)
+        viewController?.navigationController?.pushViewController(badgeIdentifiersViewController, animated: true)
+    }
 }

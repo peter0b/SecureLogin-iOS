@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key=".37462.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key=".37466.otf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BadgeIdentifiersViewController" customModule="GNS_Secure_Login" customModuleProvider="target">
+            <connections>
+                <outlet property="badgeIdentifierLabel" destination="FE7-d2-NIt" id="O24-39-m5d"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2WE-ia-sw8">
+                    <rect key="frame" x="8" y="60" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="fhg-kB-cun"/>
+                        <constraint firstAttribute="width" secondItem="2WE-ia-sw8" secondAttribute="height" id="ftl-pm-qBE"/>
+                    </constraints>
+                    <state key="normal" image="back"/>
+                    <connections>
+                        <action selector="backButtonDidPressed:" destination="-1" eventType="touchUpInside" id="Xw8-4Y-Zck"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pby-is-hf3">
+                    <rect key="frame" x="8" y="114" width="54" height="26"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="22"/>
+                    <color key="textColor" name="Text4"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Badge Identifiers"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE7-d2-NIt" customClass="SRCopyableLabel" customModule="GNSSecureBrowser" customModuleProvider="target">
+                    <rect key="frame" x="8" y="156" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                    <color key="textColor" name="Text4"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xz6-oC-cqN">
+                    <rect key="frame" x="8" y="180" width="398" height="40"/>
+                    <color key="backgroundColor" name="MainColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="2px-Ne-eVs"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button">
+                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Copy"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHalfRounded" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="copyButtonDidPressed:" destination="-1" eventType="touchUpInside" id="hPI-F4-AMu"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="xz6-oC-cqN" firstAttribute="top" secondItem="FE7-d2-NIt" secondAttribute="bottom" constant="24" id="2ij-CF-Tbi"/>
+                <constraint firstItem="Pby-is-hf3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="BMd-S1-AAd"/>
+                <constraint firstItem="FE7-d2-NIt" firstAttribute="top" secondItem="Pby-is-hf3" secondAttribute="bottom" constant="16" id="G88-8p-CWM"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FE7-d2-NIt" secondAttribute="trailing" constant="8" id="JPI-bl-LD1"/>
+                <constraint firstItem="2WE-ia-sw8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="16" id="JVs-VK-U5Q"/>
+                <constraint firstItem="2WE-ia-sw8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="WcA-1Y-fxo"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Pby-is-hf3" secondAttribute="trailing" constant="8" id="dRu-G4-MCp"/>
+                <constraint firstItem="xz6-oC-cqN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="da8-k5-lmd"/>
+                <constraint firstItem="FE7-d2-NIt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="pKO-c4-bmh"/>
+                <constraint firstAttribute="trailing" secondItem="xz6-oC-cqN" secondAttribute="trailing" constant="8" id="yR8-4D-Y4i"/>
+                <constraint firstItem="Pby-is-hf3" firstAttribute="top" secondItem="2WE-ia-sw8" secondAttribute="bottom" constant="24" id="zSe-Bj-lFD"/>
+            </constraints>
+            <point key="canvasLocation" x="-178" y="112"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="FE7-d2-NIt"/>
+    </designables>
+    <resources>
+        <image name="back" width="25" height="25"/>
+        <namedColor name="MainColor">
+            <color red="0.28999999165534973" green="0.75700002908706665" blue="0.85500001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Text4">
+            <color red="0.054901960784313725" green="0.047058823529411764" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -125,11 +125,15 @@ final class HomeViewController: BaseViewController {
         
         NotificationCenter.default.addObserver(forName: .NfcBatteryStatus, object: nil, queue: .main) { [weak self] notification in
             let dict = notification.userInfo
-            let batteryLevel = dict?["battery"] as? String ?? ""
-            print("NFC Battery Level in home:", batteryLevel)
-            
-            self?.batteryLevelView.nfcBatteryView.isHidden = false
-            self?.batteryLevelView.nfcBatteryLabel.text = batteryLevel
+            if let batteryLevel = dict?["battery"] as? Int, batteryLevel == -1 {
+                self?.batteryLevelView.nfcBatteryView.isHidden = true
+                self?.batteryLevelView.nfcBatteryLabel.text = ""
+            } else if let batteryLevel = dict?["battery"] as? String {
+                print("NFC Battery Level in home:", batteryLevel)
+                
+                self?.batteryLevelView.nfcBatteryView.isHidden = false
+                self?.batteryLevelView.nfcBatteryLabel.text = batteryLevel
+            }
         }
     }
     

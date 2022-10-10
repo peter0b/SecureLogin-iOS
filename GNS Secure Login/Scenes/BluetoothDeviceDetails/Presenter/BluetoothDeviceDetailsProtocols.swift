@@ -32,6 +32,7 @@ protocol BluetoothDeviceDetailsRouterProtocol: BaseRouterProtocol {
     func navigateToFingerprintEnrollmentViewController(withBluetoothDevice ble: CBPeripheral, enrollAlertType: EnrollAlertType, badgeSerial: String, firstEnrollment: Bool)
     func navigateToFormatBadgeViewController()
     func navigateToUpdateBadgeViewController(dfuPeripheral: CBPeripheral)
+    func naviagateToBadgeIdentifiersViewController(withIdentifier identifier: String)
 }
 
 protocol BluetoothDeviceDetailsInteractorInputProtocol: BaseInteractorInputProtocol {

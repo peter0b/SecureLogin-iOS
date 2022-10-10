@@ -28,6 +28,14 @@
 		E01808092779D2F80011A20A /* EditApplicationCredentialsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01808022779D2F80011A20A /* EditApplicationCredentialsProtocols.swift */; };
 		E018080A2779D2F80011A20A /* EditApplicationCredentialsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01808032779D2F80011A20A /* EditApplicationCredentialsInteractor.swift */; };
 		E018080B2779D2F80011A20A /* EditApplicationCredentialsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01808042779D2F80011A20A /* EditApplicationCredentialsViewController.xib */; };
+		E018103928F41E5C0050DCE8 /* BadgeIdentifiersViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E018103228F41E5C0050DCE8 /* BadgeIdentifiersViewController+Delegates.swift */; };
+		E018103A28F41E5C0050DCE8 /* BadgeIdentifiersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E018103328F41E5C0050DCE8 /* BadgeIdentifiersPresenter.swift */; };
+		E018103B28F41E5C0050DCE8 /* BadgeIdentifiersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E018103428F41E5C0050DCE8 /* BadgeIdentifiersRouter.swift */; };
+		E018103C28F41E5C0050DCE8 /* BadgeIdentifiersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E018103528F41E5C0050DCE8 /* BadgeIdentifiersViewController.swift */; };
+		E018103D28F41E5C0050DCE8 /* BadgeIdentifiersProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E018103628F41E5C0050DCE8 /* BadgeIdentifiersProtocols.swift */; };
+		E018103E28F41E5C0050DCE8 /* BadgeIdentifiersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E018103728F41E5C0050DCE8 /* BadgeIdentifiersInteractor.swift */; };
+		E018103F28F41E5C0050DCE8 /* BadgeIdentifiersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E018103828F41E5C0050DCE8 /* BadgeIdentifiersViewController.xib */; };
+		E018104828F433A30050DCE8 /* SRCopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E018104728F433A30050DCE8 /* SRCopyableLabel.swift */; };
 		E01A865828A517AA00E87334 /* FingerprintEnrollmentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01A865728A517AA00E87334 /* FingerprintEnrollmentUseCase.swift */; };
 		E01D7E2D277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D7E26277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController+Delegates.swift */; };
 		E01D7E2E277DE73B00EFD2CE /* DeviceFirmwareUpdatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D7E27277DE73B00EFD2CE /* DeviceFirmwareUpdatePresenter.swift */; };
@@ -450,6 +458,14 @@
 		E01808022779D2F80011A20A /* EditApplicationCredentialsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditApplicationCredentialsProtocols.swift; sourceTree = "<group>"; };
 		E01808032779D2F80011A20A /* EditApplicationCredentialsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditApplicationCredentialsInteractor.swift; sourceTree = "<group>"; };
 		E01808042779D2F80011A20A /* EditApplicationCredentialsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditApplicationCredentialsViewController.xib; sourceTree = "<group>"; };
+		E018103228F41E5C0050DCE8 /* BadgeIdentifiersViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BadgeIdentifiersViewController+Delegates.swift"; sourceTree = "<group>"; };
+		E018103328F41E5C0050DCE8 /* BadgeIdentifiersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeIdentifiersPresenter.swift; sourceTree = "<group>"; };
+		E018103428F41E5C0050DCE8 /* BadgeIdentifiersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeIdentifiersRouter.swift; sourceTree = "<group>"; };
+		E018103528F41E5C0050DCE8 /* BadgeIdentifiersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeIdentifiersViewController.swift; sourceTree = "<group>"; };
+		E018103628F41E5C0050DCE8 /* BadgeIdentifiersProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeIdentifiersProtocols.swift; sourceTree = "<group>"; };
+		E018103728F41E5C0050DCE8 /* BadgeIdentifiersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeIdentifiersInteractor.swift; sourceTree = "<group>"; };
+		E018103828F41E5C0050DCE8 /* BadgeIdentifiersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BadgeIdentifiersViewController.xib; sourceTree = "<group>"; };
+		E018104728F433A30050DCE8 /* SRCopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRCopyableLabel.swift; sourceTree = "<group>"; };
 		E01A865728A517AA00E87334 /* FingerprintEnrollmentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintEnrollmentUseCase.swift; sourceTree = "<group>"; };
 		E01D7E26277DE73B00EFD2CE /* DeviceFirmwareUpdateViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceFirmwareUpdateViewController+Delegates.swift"; sourceTree = "<group>"; };
 		E01D7E27277DE73B00EFD2CE /* DeviceFirmwareUpdatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFirmwareUpdatePresenter.swift; sourceTree = "<group>"; };
@@ -957,6 +973,60 @@
 			isa = PBXGroup;
 			children = (
 				E01808042779D2F80011A20A /* EditApplicationCredentialsViewController.xib */,
+			);
+			path = Nib;
+			sourceTree = "<group>";
+		};
+		E018103128F41E3B0050DCE8 /* BadgeIdentifiers */ = {
+			isa = PBXGroup;
+			children = (
+				E018104628F41F150050DCE8 /* Nib */,
+				E018104328F41EE30050DCE8 /* View */,
+				E018104528F41F0A0050DCE8 /* Presenter */,
+				E018104128F41E850050DCE8 /* Interactor */,
+				E018104028F41E700050DCE8 /* Router */,
+			);
+			path = BadgeIdentifiers;
+			sourceTree = "<group>";
+		};
+		E018104028F41E700050DCE8 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				E018103428F41E5C0050DCE8 /* BadgeIdentifiersRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		E018104128F41E850050DCE8 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E018103728F41E5C0050DCE8 /* BadgeIdentifiersInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		E018104328F41EE30050DCE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E018103528F41E5C0050DCE8 /* BadgeIdentifiersViewController.swift */,
+				E018103228F41E5C0050DCE8 /* BadgeIdentifiersViewController+Delegates.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E018104528F41F0A0050DCE8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E018103628F41E5C0050DCE8 /* BadgeIdentifiersProtocols.swift */,
+				E018103328F41E5C0050DCE8 /* BadgeIdentifiersPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E018104628F41F150050DCE8 /* Nib */ = {
+			isa = PBXGroup;
+			children = (
+				E018103828F41E5C0050DCE8 /* BadgeIdentifiersViewController.xib */,
 			);
 			path = Nib;
 			sourceTree = "<group>";
@@ -1781,6 +1851,7 @@
 				E0C01FA426D69F49002FFDAE /* FingerprintEnrollment */,
 				E05C691C26DB9A5B00B404BC /* FingerprintVideoTutorial */,
 				E08012AB26AD7FCB002C75D0 /* FormatBadge */,
+				E018103128F41E3B0050DCE8 /* BadgeIdentifiers */,
 				E01D7E25277DE71000EFD2CE /* DeviceFirmwareUpdate */,
 			);
 			path = Scenes;
@@ -2160,6 +2231,7 @@
 			isa = PBXGroup;
 			children = (
 				E0B286A426BA716F000E0139 /* IconLabel.swift */,
+				E018104728F433A30050DCE8 /* SRCopyableLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -2744,6 +2816,7 @@
 				E0A6564726AA2E8A00999324 /* HomeItemTableViewCell.xib in Resources */,
 				E083A17226D27A8B002C5FC3 /* BluetoothDeviceHeaderCollectionViewCell.xib in Resources */,
 				E05C693026DB9AA100B404BC /* FingerprintVideoTutorialViewController.xib in Resources */,
+				E018103F28F41E5C0050DCE8 /* BadgeIdentifiersViewController.xib in Resources */,
 				E0B287A526BA7172000E0139 /* no-internet.pdf in Resources */,
 				E0842BF826A8520800581B63 /* Montserrat-LightItalic.ttf in Resources */,
 				E0842C0826A8520800581B63 /* Montserrat-Italic.ttf in Resources */,
@@ -2896,6 +2969,7 @@
 				E018080A2779D2F80011A20A /* EditApplicationCredentialsInteractor.swift in Sources */,
 				E0B287BA26BA7172000E0139 /* ButtonWithImageAndTitleExtension.swift in Sources */,
 				E05C692926DB9A7400B404BC /* FingerprintVideoTutorialProtocols.swift in Sources */,
+				E018103928F41E5C0050DCE8 /* BadgeIdentifiersViewController+Delegates.swift in Sources */,
 				E0C01F8926D67CC1002FFDAE /* BundleExtensions.swift in Sources */,
 				E0B281E726B821C1000E0139 /* ApplicationItemCollectionViewCell.swift in Sources */,
 				E0B287B026BA7172000E0139 /* UITableViewExtensions.swift in Sources */,
@@ -2925,6 +2999,7 @@
 				E002419628A3E7C500B5E0E4 /* EnrollmentAlertViewController.swift in Sources */,
 				E0B2878826BA7172000E0139 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
 				E0B281EE26B8F93B000E0139 /* GetApplicationsList.swift in Sources */,
+				E018103A28F41E5C0050DCE8 /* BadgeIdentifiersPresenter.swift in Sources */,
 				E01A865828A517AA00E87334 /* FingerprintEnrollmentUseCase.swift in Sources */,
 				E0C01FB126D69F6C002FFDAE /* FingerprintEnrollmentProtocols.swift in Sources */,
 				E0842DBA26A85C1A00581B63 /* Typography.swift in Sources */,
@@ -3051,6 +3126,7 @@
 				E09F1C7E278F099800860913 /* AuthResponse.swift in Sources */,
 				E05C692F26DB9AA100B404BC /* FingerprintVideoTutorialViewController.swift in Sources */,
 				E002418828A3CBC600B5E0E4 /* MetaDataResponse.swift in Sources */,
+				E018104828F433A30050DCE8 /* SRCopyableLabel.swift in Sources */,
 				E0842C3026A8568100581B63 /* BaseRouter.swift in Sources */,
 				E0B2876B26BA7171000E0139 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
 				E0842C3226A8568100581B63 /* BaseView.swift in Sources */,
@@ -3125,6 +3201,7 @@
 				E0B2878C26BA7172000E0139 /* SplashAnimation.swift in Sources */,
 				E09F1C7B278F037800860913 /* AuthRequest.swift in Sources */,
 				E0B2878326BA7172000E0139 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
+				E018103E28F41E5C0050DCE8 /* BadgeIdentifiersInteractor.swift in Sources */,
 				E0B2874126BA7171000E0139 /* UILabelHelper.swift in Sources */,
 				E07BA5C226B1B489001A14A6 /* CardStateMonitor.swift in Sources */,
 				E0B281CE26B81102000E0139 /* ApplicationsListViewController+Delegates.swift in Sources */,
@@ -3137,6 +3214,7 @@
 				E0B2879726BA7172000E0139 /* NeumorphicView.swift in Sources */,
 				E08012D226AD8117002C75D0 /* FormatBadgeInteractor.swift in Sources */,
 				E0B287C626BA7173000E0139 /* UIDeviceExtensions.swift in Sources */,
+				E018103B28F41E5C0050DCE8 /* BadgeIdentifiersRouter.swift in Sources */,
 				E0842C2926A8568100581B63 /* BaseCollectionViewController.swift in Sources */,
 				E08012CE26AD8117002C75D0 /* FormatBadgePresenter.swift in Sources */,
 				E08012B826AD8000002C75D0 /* ScanBadgeProtocols.swift in Sources */,
@@ -3155,6 +3233,7 @@
 				E0C01F8526D67C43002FFDAE /* BatteryLevelView.swift in Sources */,
 				E01D7E32277DE73B00EFD2CE /* DeviceFirmwareUpdateInteractor.swift in Sources */,
 				E0842DB826A85C1A00581B63 /* Colors.swift in Sources */,
+				E018103C28F41E5C0050DCE8 /* BadgeIdentifiersViewController.swift in Sources */,
 				E0B2876326BA7171000E0139 /* NVActivityIndicatorPresenter.swift in Sources */,
 				E0B281F926B90195000E0139 /* ApplicationsListRepositryImp.swift in Sources */,
 				E0B281CF26B81102000E0139 /* ApplicationsListPresenter.swift in Sources */,
@@ -3175,6 +3254,7 @@
 				E01808072779D2F80011A20A /* EditApplicationCredentialsRouter.swift in Sources */,
 				E0B2877D26BA7172000E0139 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
 				E083A16226D26787002C5FC3 /* BluetoothDeviceDetailsInteractor.swift in Sources */,
+				E018103D28F41E5C0050DCE8 /* BadgeIdentifiersProtocols.swift in Sources */,
 				E01D7E2F277DE73B00EFD2CE /* DeviceFirmwareUpdateRouter.swift in Sources */,
 				E0B287B326BA7172000E0139 /* UITextFieldExtensions.swift in Sources */,
 				E0B2879A26BA7172000E0139 /* CaptionTextView.swift in Sources */,
@@ -3328,7 +3408,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "GNS Secure Login/GNS Secure Login.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = YVTC4FNRR4;
 				INFOPLIST_FILE = "$(SRCROOT)/GNS Secure Login/Configuration/Info.plist";
@@ -3336,6 +3416,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sbadge.gns.sl.GNS-Secure-Login";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -3351,13 +3432,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "GNS Secure Login/GNS Secure Login.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEVELOPMENT_TEAM = YVTC4FNRR4;
 				INFOPLIST_FILE = "$(SRCROOT)/GNS Secure Login/Configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sbadge.gns.sl.GNS-Secure-Login";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

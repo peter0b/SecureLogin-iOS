@@ -47,9 +47,9 @@ final class BluetoothDeviceDetailsViewController: BaseViewController {
             PersistentDataHelper.shared.readerPeripheral = ble.identifier.uuidString
             PersistentDataHelper.shared.readerConnected = true
             isConnected = true
-            DispatchQueue.main.async { [weak self] in
-                self?.collectionView.reloadData()
-            }
+//            DispatchQueue.main.async { [weak self] in
+//                self?.collectionView.reloadData()
+//            }
         }
     }
     
@@ -173,9 +173,10 @@ extension BluetoothDeviceDetailsViewController: BluetoothDeviceHeaderCollectionV
         bluetoothManager.stopScanForBLEDevices()
         PersistentDataHelper.shared.readerConnected = false
         isConnected = false
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView.reloadData()
-        }
+//        DispatchQueue.main.async { [weak self] in
+//            self?.collectionView.reloadData()
+//        }
+        NotificationCenter.default.post(name: .NfcBatteryStatus, object: nil, userInfo: ["battery": -1])
     }
     
     func connectBadge() {

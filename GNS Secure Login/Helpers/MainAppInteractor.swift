@@ -16,14 +16,18 @@ class MainAppInteractor {
         if let window = window {
             self.mWindow = window
         }
-        let splitViewController = SplitViewController()
-        splitViewController.viewControllers = [
-            UINavigationController(rootViewController: HomeRouter.createModule()),
-            UINavigationController(rootViewController: ScanBadgeRouter.createModule())
-        ]
-        mWindow.rootViewController = splitViewController //AuthRouter.createModule()
-//        let homeVC = UINavigationController(rootViewController: HomeRouter.createModule())
-//        mWindow.rootViewController = homeVC
+        if  let token = PersistentDataHelper.shared.token, !token.isEmpty {
+            let splitViewController = SplitViewController()
+            splitViewController.viewControllers = [
+                UINavigationController(rootViewController: HomeRouter.createModule()),
+                UINavigationController(rootViewController: ScanBadgeRouter.createModule())
+            ]
+            mWindow.rootViewController = splitViewController
+            //        let homeVC = UINavigationController(rootViewController: HomeRouter.createModule())
+            //        mWindow.rootViewController = homeVC
+        } else {
+            mWindow.rootViewController = AuthRouter.createModule()
+        }
         mWindow.makeKeyAndVisible()
         return mWindow
     }

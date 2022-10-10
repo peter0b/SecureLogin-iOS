@@ -11,6 +11,7 @@ import CoreBluetooth
 
 // MARK: - UserDefaultsKeys
 enum UserDefaultsKeys: String {
+    case userToken = "USER_TOKEN"
     case user = "USER"
     case readerConnected = "READER_PERIFPHERAL_CONNECTED"
     case readerIdentifier = "READER_PERIPHERAL_IDENTIFIER"
@@ -28,6 +29,11 @@ class PersistentDataHelper {
     static let shared = PersistentDataHelper()
     
     private init() { }
+    
+    var token: String? {
+        get { return userDefaults.string(forKey: UserDefaultsKeys.userToken.rawValue) }
+        set { userDefaults.set(newValue, forKey: UserDefaultsKeys.userToken.rawValue) }
+    }
     
 //    var user: AuthResponse? {
 //        get {

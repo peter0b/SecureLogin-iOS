@@ -30,7 +30,7 @@ class BaseViewController: UIViewController, NVActivityIndicatorViewable {
 extension BaseViewController: BaseViewProtocol {
     
     func showLoading() {
-        view.subviews.forEach { $0.alpha = 0 }
+//        view.subviews.forEach { $0.alpha = 0 }
         keyWindow?.startBlockingActivityIndicator()
     }
     
